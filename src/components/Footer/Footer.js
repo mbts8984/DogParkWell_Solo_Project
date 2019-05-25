@@ -8,7 +8,9 @@ import './Footer.css'
 
 const Footer = () => (
   <footer>
-    &copy; Prime Digital Academy
+    <div className='footerDiv'>
+    <p className="footerText">Go Out. Scoop Poop. Dog Park Well.</p>
+    </div>
   </footer>
 );
 
