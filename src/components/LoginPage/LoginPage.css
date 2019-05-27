@@ -1,0 +1,25 @@
+.loginBigDiv{
+    display: inline-flex;
+}
+
+.loginCard{
+    display: inline-block;
+    width: 450px;
+    padding: 100px;
+}
+
+Card{
+    width: 500px;
+    display: inline-flex;
+    padding: 40px;
+}
+
+.header{
+    text-align: center;
+}
+
+.loginForm {
+    width: fit-content;
+    background-color: lightgray;
+    height: min-content;
+}
