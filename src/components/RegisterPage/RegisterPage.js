@@ -172,7 +172,7 @@ class RegisterPage extends Component {
             helperText="Select the dog park that you visit the most frequently"
             >
               {this.props.reduxState.map(option => (
-          <MenuItem key={option.id} value={option.value}>
+          <MenuItem key={option.id} value={option.dog_park}>
             {option.dog_park}
           </MenuItem>))} 
 
