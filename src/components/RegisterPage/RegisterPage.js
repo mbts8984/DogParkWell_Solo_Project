@@ -1,11 +1,31 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import {Card, CardActions, Button, Typography, TextField, MenuItem} from '@material-ui/core';
+import './RegisterPage.css';
 
 class RegisterPage extends Component {
   state = {
     username: '',
     password: '',
+    humanName: '',
+    email: '',
+    phoneNumber:'',
+    preferredContactMethod:'',
+    homeDogPark:''
   };
+
+
+  contactMethods = [
+  {
+    value: 'Email',
+  },
+  {
+    value: 'Text',
+  },
+  {
+    value: 'Either',
+  }
+];
 
   registerUser = (event) => {
     event.preventDefault();
@@ -24,6 +44,7 @@ class RegisterPage extends Component {
   } // end registerUser
 
   handleInputChangeFor = propertyName => (event) => {
+   console.log(this.state.humanName)
     this.setState({
       [propertyName]: event.target.value,
     });
@@ -31,6 +52,10 @@ class RegisterPage extends Component {
 
   render() {
     return (
+      <>
+       <Typography className="welcomeHeader" variant="h2" component="h1">Welcome To Dog Park Well</Typography>
+       <Typography className="welcomeHeader" variant="h6" component="h1">Create Your Account To Start Meeting Up With Fellow Dog Lovers & Pooches!</Typography>
+      
       <div>
         {this.props.errors.registrationMessage && (
           <h2
@@ -40,10 +65,19 @@ class RegisterPage extends Component {
             {this.props.errors.registrationMessage}
           </h2>
         )}
-        <form onSubmit={this.registerUser}>
-          <h1>Register User</h1>
+      {/* <Card className="registerCard"> */}
+        <form className="registerForm" onSubmit={this.registerUser}>
+    
+          <Typography variant="h5" component="h4">Add Your Human Information</Typography>
           <div>
-            <label htmlFor="username">
+          <TextField label="Username"
+            value={this.state.username}
+            onChange={this.handleInputChangeFor('username')}
+            variant="outlined"
+            fullWidth
+            margin="normal">
+          </TextField>
+            {/* <label htmlFor="username">
               Username:
               <input
                 type="text"
@@ -51,10 +85,19 @@ class RegisterPage extends Component {
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
               />
-            </label>
+            </label> */}
           </div>
+          {/* End username input */}
+          {/* Password input */}
           <div>
-            <label htmlFor="password">
+            <TextField label="Password"
+            value={this.state.password}
+            onChange={this.handleInputChangeFor('password')}
+            variant="outlined"
+            fullWidth
+            margin="normal">
+          </TextField>
+            {/* <label htmlFor="password">
               Password:
               <input
                 type="password"
@@ -62,8 +105,81 @@ class RegisterPage extends Component {
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
-            </label>
+            </label> */}
           </div>
+          {/* end Password input */}
+          {/* Human Name Input */}
+          <div>
+            <TextField label="Human Name"
+            value={this.state.humanName}
+            onChange={this.handleInputChangeFor('humanName')}
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            ></TextField>
+          </div>
+          {/* End Human Name input */}
+          {/* Email input area */}
+          <div>
+            <TextField label="Email"
+              value={this.state.email}
+              onChange={this.handleInputChangeFor('email')}
+              variant="outlined"
+              fullWidth
+              margin="normal"
+            ></TextField>
+          </div>
+          {/* End Email Input */}
+          {/* Phone number input */}
+          <div>
+            <TextField label="Phone Number"
+            type="number"
+            value={this.state.phoneNumber}
+            onChange={this.handleInputChangeFor('phoneNumber')}
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            ></TextField>
+          </div>
+          {/* end phone number input */}
+          {/* Preferred Contact Method Dropdown */}
+          <div> 
+            <TextField select
+            label="Preferred Contact Method"
+            value={this.state.preferredContactMethod}
+            fullWidth
+            variant="outlined"
+            margin="normal"
+            onChange={this.handleInputChangeFor('preferredContactMethod')}
+            helperText="Please Select How You Prefer To Receive Notifications"
+            >
+              {this.contactMethods.map(option => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.value}
+          </MenuItem>))}
+          </TextField>
+          </div>
+            {/* end Preferred contact method dropdown */}
+            {/* Home Dog Park dropdown mapping over the options in the 'dog park' table in DB */}
+          <div>
+            <TextField select
+            label="Home Dog Park"
+            value={this.state.homeDogPark}
+            fullWidth
+            variant="outlined"
+            margin="normal"
+            onChange={this.handleInputChangeFor('homeDogPark')}
+            helperText="Select the dog park that you visit the most frequently"
+            >
+              {this.props.reduxState.map(option => (
+          <MenuItem key={option.id} value={option.dog_park}>
+            {option.dog_park}
+          </MenuItem>))} 
+
+            </TextField>
+
+          </div>
+          {/* end Home Dog Park Drop Down */}
           <div>
             <input
               className="register"
@@ -72,7 +188,13 @@ class RegisterPage extends Component {
               value="Register"
             />
           </div>
+        <CardActions>
+          <Button className="register" type="submit" name="submit" value="register" variant="outlined" color="primary">Add My Dog</Button>
+        </CardActions>
         </form>
+
+
+        {/* </Card> */}
         <center>
           <button
             type="button"
@@ -83,6 +205,7 @@ class RegisterPage extends Component {
           </button>
         </center>
       </div>
+      </>
     );
   }
 }
@@ -92,6 +215,7 @@ class RegisterPage extends Component {
 // const mapStateToProps = ({errors}) => ({ errors });
 const mapStateToProps = state => ({
   errors: state.errors,
+  reduxState: state.dogParkReducer
 });
 
 export default connect(mapStateToProps)(RegisterPage);
