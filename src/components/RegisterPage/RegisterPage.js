@@ -14,8 +14,6 @@ class RegisterPage extends Component {
     homeDogPark:''
   };
 
-  //Run GET request to 'dog park DB' to get the listing of potential home dog parks to render on DOM
-  //componentDidMount
 
   contactMethods = [
   {
@@ -172,7 +170,13 @@ class RegisterPage extends Component {
             margin="normal"
             onChange={this.handleInputChangeFor('homeDogPark')}
             helperText="Select the dog park that you visit the most frequently"
-            ></TextField>
+            >
+              {this.props.reduxState.map(option => (
+          <MenuItem key={option.id} value={option.value}>
+            {option.dog_park}
+          </MenuItem>))} 
+
+            </TextField>
 
           </div>
           {/* end Home Dog Park Drop Down */}
@@ -211,6 +215,7 @@ class RegisterPage extends Component {
 // const mapStateToProps = ({errors}) => ({ errors });
 const mapStateToProps = state => ({
   errors: state.errors,
+  reduxState: state.dogParkReducer
 });
 
 export default connect(mapStateToProps)(RegisterPage);
