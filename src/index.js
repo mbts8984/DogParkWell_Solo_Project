@@ -11,7 +11,7 @@ import rootSaga from './redux/sagas'; // imports ./redux/sagas/index.js
 import App from './components/App/App';
 
 //Import materialUI
-import materialUI from '@material-ui/core';
+//import materialUI from '@material-ui/core';
 
 const sagaMiddleware = createSagaMiddleware();
 

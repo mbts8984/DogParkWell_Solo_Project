@@ -13,7 +13,7 @@ function* fetchDogParkSaga() {
   }
 }
 
-function* userSaga() {
+function* fuserSaga() {
   yield takeEvery('FETCH_PARKS', fetchDogParkSaga);
 }
 
