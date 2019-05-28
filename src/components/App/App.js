@@ -32,6 +32,7 @@ class App extends Component {
         <header>
           <Nav/>
         </header>
+        </div>
          <body>
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
@@ -59,13 +60,17 @@ class App extends Component {
               path="/info"
               component={InfoPage}
             />
+            <ProtectedRoute
+              exact
+              path="/dogForm"
+              component={ DogForm }
+            />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
-          <Route path='/dogForm' component={ DogForm }/>
           </Switch>
           </body>
           <Footer />
-        </div>
+        
       </Router>
   )}
 }

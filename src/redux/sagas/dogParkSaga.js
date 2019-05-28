@@ -13,8 +13,8 @@ function* fetchDogParkSaga() {
   }
 }
 
-function* fuserSaga() {
+function* getDogParkSaga() {
   yield takeEvery('FETCH_PARKS', fetchDogParkSaga);
 }
 
-export default fetchDogParkSaga;
+export default getDogParkSaga;
