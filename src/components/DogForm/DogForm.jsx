@@ -36,9 +36,22 @@ class DogForm extends Component {
     addDog = (event) => {
         event.preventDefault();
         console.log('in addDog');
-    }
+        
+        this.props.dispatch({ type: 'ADD_DOG', 
+        payload: {
+            username_id: this.state.usernameid,
+            dog_name: this.state.dogName,
+            breed: this.state.breed,
+            age: this.state.age,
+            gender: this.state.gender,
+            color: this.state.color,
+            size: this.state.size            
+        }
+    })
+}
 
   render(){
+      console.log('Heres the full state: ', this.state)
       return(
         <>
        <Typography className="welcomeHeader" variant="h2" component="h1">Welcome To Dog Park Well</Typography>
