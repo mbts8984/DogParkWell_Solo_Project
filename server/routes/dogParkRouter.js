@@ -3,7 +3,7 @@ const pool = require('../modules/pool.js');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    let query = 'SELECT * FROM "dog_park";';
+    let query = 'SELECT "dog_park".id, "dog_park".dog_park FROM "dog_park";';
     pool.query(query)
         .then((results) => {
             console.log('GET from dog park router with results: ', results);

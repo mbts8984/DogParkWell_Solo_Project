@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {Card, CardActions, Button, Typography, TextField, MenuItem} from '@material-ui/core';
+import { CardActions, Button, Typography, TextField, MenuItem} from '@material-ui/core';
 import './RegisterPage.css';
 
 class RegisterPage extends Component {
@@ -29,28 +29,38 @@ class RegisterPage extends Component {
 
   registerUser = (event) => {
     event.preventDefault();
-
+    //console.log('in registerUser with dogpark data: ', this.state.homeDogPark.key)
+    
     if (this.state.username && this.state.password) {
       this.props.dispatch({
         type: 'REGISTER',
         payload: {
           username: this.state.username,
           password: this.state.password,
+          human_name: this.state.humanName,
+          email: this.state.email,
+          phone: this.state.phoneNumber,
+          preferred_contact_method: this.state.preferredContactMethod,
+          home_dog_park_id: this.state.homeDogPark
+          
         },
-      });
+      })
+      this.props.history.push('/dogForm');
     } else {
       this.props.dispatch({type: 'REGISTRATION_INPUT_ERROR'});
     }
   } // end registerUser
 
   handleInputChangeFor = propertyName => (event) => {
-   console.log(this.state.humanName)
     this.setState({
       [propertyName]: event.target.value,
     });
   }
 
   render() {
+     console.log('in handleInputChangeFor with dogpark data:', this.state.homeDogPark)
+
+    //console.log('HERE IS THE DOG PARK DATA YOU REQUESTED', this.props.reduxState)
     return (
       <>
        <Typography className="welcomeHeader" variant="h2" component="h1">Welcome To Dog Park Well</Typography>
@@ -75,7 +85,9 @@ class RegisterPage extends Component {
             onChange={this.handleInputChangeFor('username')}
             variant="outlined"
             fullWidth
-            margin="normal">
+            margin="normal"
+            helperText="Required"
+            >
           </TextField>
             {/* <label htmlFor="username">
               Username:
@@ -95,6 +107,8 @@ class RegisterPage extends Component {
             onChange={this.handleInputChangeFor('password')}
             variant="outlined"
             fullWidth
+            type = "password"
+            helperText="Required"
             margin="normal">
           </TextField>
             {/* <label htmlFor="password">
@@ -115,6 +129,7 @@ class RegisterPage extends Component {
             onChange={this.handleInputChangeFor('humanName')}
             variant="outlined"
             fullWidth
+            helperText="Required"
             margin="normal"
             ></TextField>
           </div>
@@ -126,6 +141,7 @@ class RegisterPage extends Component {
               onChange={this.handleInputChangeFor('email')}
               variant="outlined"
               fullWidth
+              helperText="Required"
               margin="normal"
             ></TextField>
           </div>
@@ -138,6 +154,7 @@ class RegisterPage extends Component {
             onChange={this.handleInputChangeFor('phoneNumber')}
             variant="outlined"
             fullWidth
+            helperText="Required"
             margin="normal"
             ></TextField>
           </div>
@@ -172,12 +189,16 @@ class RegisterPage extends Component {
             helperText="Select the dog park that you visit the most frequently"
             >
               {this.props.reduxState.map(option => (
-          <MenuItem key={option.id} value={option.dog_park}>
+          <MenuItem key={option.id} value={option.id}>
             {option.dog_park}
           </MenuItem>))} 
 
             </TextField>
-
+          {/* <select label="Home Dog Park"value={this.state.homeDogPark} onChange={this.handleInputChangeFor('homeDogPark')}>
+            {this.props.reduxState.map(park => {
+              <option key={park.id} value={park.id}>{park.dog_park}</option>
+            })}
+          </select> */}
           </div>
           {/* end Home Dog Park Drop Down */}
           <div>
@@ -189,7 +210,7 @@ class RegisterPage extends Component {
             />
           </div>
         <CardActions>
-          <Button className="register" type="submit" name="submit" value="register" variant="outlined" color="primary">Add My Dog</Button>
+          <Button className="register" type="submit" name="submit" value="register" variant="outlined" color="primary">Submit Human Info & Add My Dog</Button>
         </CardActions>
         </form>
 
