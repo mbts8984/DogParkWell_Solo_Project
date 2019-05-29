@@ -14,7 +14,7 @@ class UserPage extends Component {
 //run get requests for both the network and playdate tables
 componentDidMount(){
   this.props.dispatch({ type: 'FETCH_NETWORK'})
-  this.props.dispatch({ type: 'FETCH_EVENTS'})
+  this.props.dispatch({ type: 'FETCH_EVENT'})
 }
 
 
