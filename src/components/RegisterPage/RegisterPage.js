@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { CardActions, Button, Typography, TextField, MenuItem} from '@material-ui/core';
+import { Card, FormControl, CardActions, Button, Typography, TextField, MenuItem, FormLabel} from '@material-ui/core';
 import './RegisterPage.css';
 
 class RegisterPage extends Component {
@@ -75,10 +75,9 @@ class RegisterPage extends Component {
             {this.props.errors.registrationMessage}
           </h2>
         )}
-      {/* <Card className="registerCard"> */}
-        <form className="registerForm" onSubmit={this.registerUser}>
-    
-          <Typography variant="h5" component="h4">Add Your Human Information</Typography>
+      <Card className="registerCard">
+        <FormControl className="registerForm" onSubmit={this.registerUser}>
+         <FormLabel variant="h5">Add Your Dog's Information</FormLabel>
           <div>
           <TextField label="Username"
             value={this.state.username}
@@ -212,10 +211,8 @@ class RegisterPage extends Component {
         <CardActions>
           <Button className="register" type="submit" name="submit" value="register" variant="outlined" color="primary">Submit Human Info & Add My Dog</Button>
         </CardActions>
-        </form>
-
-
-        {/* </Card> */}
+        </FormControl>
+        </Card>
         <center>
           <button
             type="button"
