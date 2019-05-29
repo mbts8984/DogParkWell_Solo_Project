@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
     console.log(req.body);
     console.log(req.params);
     
-    let query = `SELECT "date", "time", "notes", "dog_park" FROM "playdates" 
+    let query = `SELECT "playdates".id, "date", "time", "notes", "dog_park" FROM "playdates" 
                 JOIN "user" ON "playdates".username_id="user".id
                 JOIN "dog_park" ON "playdates".dog_park_id="dog_park".id
                 WHERE "user".id = $1;

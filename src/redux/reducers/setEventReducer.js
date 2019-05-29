@@ -1,4 +1,4 @@
-const setEventReducer = (state = {}, action) => {
+const setEventReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_EVENT':
             console.log('in setEventReducer with payload:', action.payload)

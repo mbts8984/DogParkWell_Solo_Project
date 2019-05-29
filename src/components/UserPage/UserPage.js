@@ -29,9 +29,10 @@ render() {
     <h1 id="welcome">
       Welcome, { this.props.user.username }!
     </h1>
-    <Typography variant="h5">Dog Park Friends</Typography>
+    
     {/* listing of user's dog park network. Including people and dog names */}
     <Card>
+      <Typography variant="h5">Dog Park Friends</Typography>
      <Grid>
        <div className="networkListDiv">
       <List>
@@ -44,16 +45,19 @@ render() {
     </Card>
     
     <Card>
+      <Typography variant="h5">My Park History</Typography>
     <Grid> 
     <div className="eventListDiv">
       <List>
-        {/* {this.props.setEventReducer.map()} */}
-        <ListItem>
-          <ListItemText secondary="Played with Sam and Bogart">Battle Creek May 31st @ 3pm</ListItemText>
-          <ListItemSecondaryAction edge="end" aria-label="Delete">
+        {this.props.event.map(event => (
+          <ListItem key={event.id}>
+            <ListItemText secondary={event.notes}><b>Where:</b> {event.dog_park} <b>When: </b>{event.date}
+            </ListItemText>
+            <ListItemSecondaryAction edge="end" aria-label="Delete">
             <DeleteIcon onClick={this.handleEventDelete}/>
           </ListItemSecondaryAction>
-        </ListItem>
+            </ListItem>
+        ))}
       </List>
      </div>
     </Grid>
