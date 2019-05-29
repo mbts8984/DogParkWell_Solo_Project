@@ -1,4 +1,4 @@
-const dogParkReducer = (state = {}, action) => {
+const dogParkReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_PARK':
             console.log('in dogParkReducer with payload:', action.payload)
