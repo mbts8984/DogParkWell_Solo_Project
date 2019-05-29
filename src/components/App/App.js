@@ -17,6 +17,7 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import DogForm from '../DogForm/DogForm.jsx';
+import MyProfile from '../MyProfile/MyProfile.jsx';
 
 import './App.css';
 
@@ -58,6 +59,11 @@ class App extends Component {
               exact
               path="/info"
               component={InfoPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/my-profile"
+              component={ MyProfile }
             />
             <ProtectedRoute
               exact
