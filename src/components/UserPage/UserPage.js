@@ -47,6 +47,7 @@ render() {
     <Grid> 
     <div className="eventListDiv">
       <List>
+        {/* {this.props.setEventReducer.map()} */}
         <ListItem>
           <ListItemText secondary="Played with Sam and Bogart">Battle Creek May 31st @ 3pm</ListItemText>
           <ListItemSecondaryAction edge="end" aria-label="Delete">
@@ -69,6 +70,7 @@ render() {
 // const mapStateToProps = ({user}) => ({ user });
 const mapStateToProps = (state) => ({
   user: state.user,
+  event: state.setEventReducer
 });
 
 // this allows us to use <App /> in index.js

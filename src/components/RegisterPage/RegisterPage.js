@@ -14,6 +14,9 @@ class RegisterPage extends Component {
     homeDogPark:''
   };
 
+  componentDidMount(){
+    this.props.dispatch({ type: 'FETCH_PARKS'})
+  }
 
   contactMethods = [
   {
@@ -187,12 +190,11 @@ class RegisterPage extends Component {
             onChange={this.handleInputChangeFor('homeDogPark')}
             helperText="Select the dog park that you visit the most frequently"
             >
-              {this.props.reduxState.map(option => (
+              {this.props.dogPark.map(option => (
           <MenuItem key={option.id} value={option.id}>
             {option.dog_park}
           </MenuItem>))} 
-
-            </TextField>
+          </TextField>
           {/* <select label="Home Dog Park"value={this.state.homeDogPark} onChange={this.handleInputChangeFor('homeDogPark')}>
             {this.props.reduxState.map(park => {
               <option key={park.id} value={park.id}>{park.dog_park}</option>
@@ -233,7 +235,7 @@ class RegisterPage extends Component {
 // const mapStateToProps = ({errors}) => ({ errors });
 const mapStateToProps = state => ({
   errors: state.errors,
-  reduxState: state.dogParkReducer
+  dogPark: state.dogParkReducer
 });
 
 export default connect(mapStateToProps)(RegisterPage);
