@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, CardActionArea, MenuItem, Button, Typography, ListItem, List, ListItemText, FormControl, FormLabel, TextField} from '@material-ui/core';
+import { Card, MenuItem, Button, Typography, ListItem, List, ListItemText, FormControl, FormLabel, TextField} from '@material-ui/core';
 class MyProfile extends Component {
 
   state = {
@@ -24,7 +24,7 @@ componentDidMount(){
 }
     
 handleInputChangeFor = propertyName => (event) => {
-    console.log('in handleInputFor' )
+    //console.log('in handleInputFor' )
     this.setState({
       [propertyName]: event.target.value,
     });
@@ -49,7 +49,8 @@ handleInputChangeFor = propertyName => (event) => {
       payload: {
         email: this.state.email,
         phone: this.state.phoneNumber,
-        preferred_contact_method: this.state.preferredContactMethod
+        preferred_contact_method: this.state.preferredContactMethod,
+        id: this.props.user.id
       }
       })
       this.setState({
@@ -106,6 +107,8 @@ render() {
     )
   } else {
     displayToShow = (
+    <div>
+        <img src="./Images/anniesmall.JPG" alt="great dane puppy standing on log" className="anniePic" />
       <div className="updateFormDiv">
           <Card className="updateFormCard">
             <Typography variant="h5">Update Your Info</Typography>
@@ -151,6 +154,7 @@ render() {
             <Button variant="contained" color="secondary" onClick={this.handleUpdate}>Save Changes</Button>
           </Card>
           </div>
+      </div>
     )
   }
   return( displayToShow
