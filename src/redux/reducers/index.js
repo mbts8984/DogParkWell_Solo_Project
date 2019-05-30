@@ -5,7 +5,9 @@ import user from './userReducer';
 import dogParkReducer from './dogParkReducer.js';
 import setEventReducer from './setEventReducer.js';
 import setNetworkReducer from './setNetworkReducer.js';
-import setUserReducer from './setUserReducer.js';
+//import setUserReducer from './setUserReducer.js';
+import setDogsReducer from './setDogsReducer.js';
+import setHomeParkReducer from './setHomeParkReducer.js';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -20,7 +22,9 @@ const rootReducer = combineReducers({
   dogParkReducer, //stores all the dog park options in the DB
   setEventReducer, //stores all the playdate data stored in the DB for the logged in user
   setNetworkReducer, //stores all the network information from the logged in user
-  setUserReducer //stores all current users data
+  //setUserReducer //stores all current users data
+  setDogsReducer,
+  setHomeParkReducer
 });
 
 export default rootReducer;
