@@ -9,6 +9,7 @@ import networkSaga from './fetchNetworkSaga.js';
 //import getUserSaga from './fetchUserSaga.js';
 import dogSaga from './fetchDogsSaga.js';
 import homeParkSaga from './fetchHomeParkSaga.js';
+import updateUser from './updateUserSaga.js';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -28,6 +29,7 @@ export default function* rootSaga() {
     networkSaga(),
     //getUserSaga(),
     dogSaga(),
-    homeParkSaga()
+    homeParkSaga(),
+    updateUser()
   ]);
 }
