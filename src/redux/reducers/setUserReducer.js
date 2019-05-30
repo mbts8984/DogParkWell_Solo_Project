@@ -1,6 +1,6 @@
 const setUserReducer = (state = [], action) => {
     switch (action.type) {
-        case 'SET_USER':
+        case 'GET_USER':
             console.log('in setUserReducer with payload:', action.payload)
             return action.payload;
         default:
