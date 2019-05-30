@@ -4,12 +4,14 @@ import { Card, CardActionArea, CardContent, CardMedia, MenuItem, Button, Typogra
 class MyProfile extends Component {
 
   state = {
-      email: '',
-      phoneNumber: '',
-      preferredContactMethod: ''
+    email: '',
+    phoneNumber: '',
+    preferredContactMethod: '',
+    buttonClicked: false
   }
 
-  contactMethods = [
+  
+contactMethods = [
   {value: 'Email',},
   {value: 'Text',},
   {value: 'Either',}
@@ -28,18 +30,37 @@ handleInputChangeFor = propertyName => (event) => {
     });
   }
 
+// handleEmailChange = (event) => {
+//   console.log('in handleEmailChange');
+//   this.setState({
+//     stuffToUpdate: {
+//       ...this.state,
+//       email: event.target.value
+//     }
+//   })
+  
+// }
+
   handleUpdate = (event) => {
       console.log('in handleUpdate')
   }
 
   handleClick = (event) => {
-      console.log('in handleClick')
+      console.log('in handleClick');
+      this.setState({
+        ...this.state,
+        buttonClicked: !this.state.buttonClicked
+      })
   }
 
 render() {
     console.log('updated email state: ', this.state.email);
     console.log('updated phone state: ', this.state.phoneNumber);
     console.log('updated preferred contact method state: ', this.state.preferredContactMethod);
+    console.log('updateBtnClicked: ', this.state.buttonClicked);
+  
+  //let updateBtnClicked = false; 
+
   return(
   <>    
   <div>    

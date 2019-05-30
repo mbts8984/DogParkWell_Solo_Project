@@ -21,6 +21,12 @@ import MyProfile from '../MyProfile/MyProfile.jsx';
 
 import './App.css';
 
+// const styles = {
+//   root : {
+//     backgroundColor: 'red'
+//   }
+// }
+
 class App extends Component {
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'})
