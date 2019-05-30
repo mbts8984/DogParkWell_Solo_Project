@@ -6,13 +6,14 @@ class MyProfile extends Component {
 componentDidMount(){
     //this.props.dispatch({type: 'FETCH_USER'})
     this.props.dispatch({type: 'FETCH_DOGS'})
+    this.props.dispatch({ type: 'FETCH_HOME_PARK'})
 }
     
-// handleInputChangeFor = propertyName => (event) => {
-//     this.setState({
-//       [propertyName]: event.target.value,
-//     });
-//   }
+handleInputChangeFor = propertyName => (event) => {
+    this.setState({
+      [propertyName]: event.target.value,
+    });
+  }
 
 render() {
   return(
@@ -24,14 +25,19 @@ render() {
     <Typography variant="h5">{this.props.user.username}</Typography>
      <div className="myProfileCardDiv">
      <List>
-     {/* {this.props.reduxState.map(thisUser => (
-          <ListItem>
-             <ListItemText>{thisUser.email}</ListItemText>
+         <ListItemText><b>Dog Name(s)</b></ListItemText>
+     {this.props.dogs.map(dog => (
+          <ListItem key={dog.id}>
+             {dog.dog_name}
             </ListItem>
-        ))} */}
-      <ListItem>ITEM ONE</ListItem> 
-      <ListItem>ITEM TWO</ListItem>  
-     </List>
+        ))}
+    <ListItemText><b>Email</b></ListItemText>
+      <ListItem>{this.props.user.email}</ListItem>  
+    <ListItemText><b>Phone Number</b></ListItemText>
+      <ListItem>{this.props.user.phone}</ListItem>  
+    <ListItemText><b>Preferred Contact Method</b></ListItemText>
+    <ListItem>{this.props.user.preferred_contact_method}</ListItem>   
+    </List>
      </div>
     </Card>
 
@@ -43,7 +49,9 @@ render() {
 
 const mapStateToProps = (reduxState) => ({
     user: reduxState.user,
-    reduxState: reduxState.setUserReducer
+    dogs: reduxState.setDogsReducer,
+    // thisUser: reduxState.
+    
 })
 
 export default connect(mapStateToProps)(MyProfile);

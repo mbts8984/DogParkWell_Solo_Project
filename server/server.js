@@ -13,7 +13,8 @@ const userRouter = require('./routes/user.router');
 const dogParkRouter = require('./routes/dogParkRouter');
 const addDogRouter = require('./routes/addDogRouter.js');
 const playdateEventRouter = require('./routes/playdateEventRouter.js');
-const getUserRouter = require('./routes/getUserRouter.js');
+//const getUserRouter = require('./routes/getUserRouter.js');
+const getDogsRouter = require('./routes/getDogsRouter.js');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -31,7 +32,8 @@ app.use('/api/user', userRouter);
 app.use('/api/dog-park', dogParkRouter);
 app.use('/api/addDog', addDogRouter);
 app.use('/api/playdate', playdateEventRouter);
-app.use('/api/getClient', getUserRouter)
+//app.use('/api/getClient', getUserRouter);
+app.use('/api/getDogs', getDogsRouter);
 
 // Serve static files
 app.use(express.static('build'));
