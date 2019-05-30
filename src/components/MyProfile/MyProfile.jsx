@@ -37,7 +37,12 @@ render() {
       <ListItem>{this.props.user.phone}</ListItem>  
     <ListItemText><b>Preferred Contact Method</b></ListItemText>
     <ListItem>{this.props.user.preferred_contact_method}</ListItem>   
+    <ListItemText><b>Home Dog Park</b></ListItemText>
+    {this.props.homePark.map(park => (
+        <ListItem key={park.id}>{park.dog_park}</ListItem>
+    ))}
     </List>
+    <Button variant="contained" color="primary">Update Info</Button>
      </div>
     </Card>
 
@@ -51,6 +56,7 @@ const mapStateToProps = (reduxState) => ({
     user: reduxState.user,
     dogs: reduxState.setDogsReducer,
     // thisUser: reduxState.
+    homePark: reduxState.setHomeParkReducer
     
 })
 
