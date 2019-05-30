@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, CardActionArea, CardContent, CardMedia, Button, Typography, ListItem, List, ListItemText, FormControl, FormLabel, TextField} from '@material-ui/core';
+import { Card, CardActionArea, CardContent, CardMedia, MenuItem, Button, Typography, ListItem, List, ListItemText, FormControl, FormLabel, TextField} from '@material-ui/core';
 class MyProfile extends Component {
 
   state = {
@@ -30,6 +30,10 @@ handleInputChangeFor = propertyName => (event) => {
 
   handleUpdate = (event) => {
       console.log('in handleUpdate')
+  }
+
+  handleClick = (event) => {
+      console.log('in handleClick')
   }
 
 render() {
@@ -62,7 +66,7 @@ render() {
         <ListItem key={park.id}>{park.dog_park}</ListItem>
     ))}
     </List>
-    <Button onClick={this.handleUpdate} variant="contained" color="primary">Update Info</Button>
+    <Button onClick={this.handleClick} variant="contained" color="primary">Update Info</Button>
      </div>
     </Card>
     </div>
@@ -93,9 +97,25 @@ render() {
          margin="normal"
         ></TextField>
        </div>
+     <div> 
+        <TextField select
+        label="Preferred Contact Method"
+        value={this.state.preferredContactMethod}
+        fullWidth
+        variant="outlined"
+        margin="normal"
+        onChange={this.handleInputChangeFor('preferredContactMethod')}
+        helperText="Please Select How You Prefer To Receive Notifications"
+        >
+            {this.contactMethods.map(option => (
+        <MenuItem key={option.value} value={option.value}>
+        {option.value}
+        </MenuItem>))}
+        </TextField>
+        </div>
+      <Button variant="contained" color="secondary" onClick={this.handleUpdate}>Save Changes</Button>
      </Card>
     </div>
-    
     </>
     )}
 
