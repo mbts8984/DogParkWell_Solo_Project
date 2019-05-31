@@ -22,8 +22,9 @@ componentDidMount(){
 }
 
 
-handleEventDelete = (event) => {
-  console.log('in handleEventDelete with id', event);
+handleEventDelete = (id) => {
+  console.log('in handleEventDelete with id', id);
+  this.props.dispatch({ type: 'DELETE_EVENT', payload: {id : id}})
 
 }
 render() {

@@ -18,6 +18,7 @@ const getDogsRouter = require('./routes/getDogsRouter.js');
 const fetchHomeParkRouter = require('./routes/fetchHomeParkRouter.js');
 const updateUserRouter = require('./routes/updateUserRouter.js');
 const sendEventRouter = require('./routes/sendEventRouter.js');
+const deleteEventRouter = require('./routes/deleteEventRouter.js');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -40,6 +41,7 @@ app.use('/api/getDogs', getDogsRouter);
 app.use('/api/getHomePark', fetchHomeParkRouter)
 app.use('/api/updateUser', updateUserRouter);
 app.use('/api/sendEvent', sendEventRouter)
+app.use('/api/deleteEvent', deleteEventRouter)
 
 // Serve static files
 app.use(express.static('build'));
