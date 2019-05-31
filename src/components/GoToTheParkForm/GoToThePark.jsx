@@ -118,7 +118,7 @@ render(){
          variant="contained"
          color="primary"
          onClick={this.handleClick}
-        >Let's Go To The Park</Button>
+        >Add Your Event & Notify Your Network</Button>
       </FormControl>
      </div>
     </Card>
