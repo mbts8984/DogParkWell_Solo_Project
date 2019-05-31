@@ -7,9 +7,11 @@ class NetworkList extends Component {
 
 render() {        
 return (
+ 
     <div>
         <p>MY LIST O FRIENDS</p>
     </div>
+
         )
     }
 }

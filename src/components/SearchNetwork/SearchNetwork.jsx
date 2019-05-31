@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, CardActions, Button, Typography, TextField, MenuItem, FormControl, FormLabel, FormGroup } from '@material-ui/core';
+import { Card, Button, Typography, TextField, FormControl, ListItem, List, ListItemText, Divider, FormLabel, FormGroup } from '@material-ui/core';
 
 class SearchNetwork extends Component {
 
@@ -18,12 +18,16 @@ class SearchNetwork extends Component {
         event.preventDefault();
         console.log('in searchNetwork');
         
+        this.props.dispatch({ type: 'SEARCH_NETWORK', 
+        payload: {
+            human_name: this.state.humanName
+        }
+        })
     }
 
 render() {
   console.log('human name state: ', this.state.humanName);
   
-
     return (
     <div>
      <Card>
@@ -42,6 +46,21 @@ render() {
         <Button className="searchNetworkBtn" type="submit" onClick={this.searchNetwork} variant="contained" color="secondary">Search</Button>
       </FormControl>
      </Card>
+     <div>
+      <Typography variant="h4">Search Results</Typography>
+    </div>
+     <List>
+        <ListItem>
+         <ListItemText>
+             <Typography variant="body1">Human & Dog1</Typography>
+         </ListItemText>
+        </ListItem>
+        <ListItem>
+         <ListItemText>
+             <Typography variant="body1">Human & Dog2</Typography>
+         </ListItemText>
+        </ListItem>
+     </List>
     </div>
     )
 }
