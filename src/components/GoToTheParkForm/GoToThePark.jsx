@@ -40,7 +40,9 @@ handleClick = (event) => {
        notes: this.state.notes,
        id: this.props.user.id 
     }
-    })
+    });
+
+    this.props.history.push('/');
     
 }
 
@@ -72,6 +74,7 @@ render(){
         <TextField
          id="date"
          label="Date"
+         //value={this.state.date}
          type="date"
          defaultValue="2019-06-01"
          className="calendar"
@@ -80,6 +83,7 @@ render(){
      <TextField
         id="time"
         label="Dog Park Time"
+        //value={this.state.time}
         type="time"
         defaultValue="12:00"
         className="timePicker"
@@ -87,6 +91,7 @@ render(){
        ></TextField>  
         <TextField
         label="Notes"
+        value={this.state.notes}
         onChange={this.handleInputChangeFor('notes')}
         variant="outlined"
         margin="normal"
