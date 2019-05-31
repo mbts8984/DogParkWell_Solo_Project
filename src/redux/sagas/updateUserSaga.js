@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { takeEvery } from 'redux-saga/effects';
+import { takeEvery, put } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "FETCH_PARKS" actions
 function* updateUserSaga(action) {
@@ -8,7 +8,7 @@ function* updateUserSaga(action) {
     try {
       //PUT new dog to dog_data table
     yield axios.put(`/api/updateUser/${action.payload.id}`, action.payload);
-
+    yield put({type: 'FETCH_USER'})
   } catch (error) {
     console.log('error in updateUser PUT request failed', error);
   }
