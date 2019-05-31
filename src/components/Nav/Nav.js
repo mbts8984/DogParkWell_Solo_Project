@@ -22,7 +22,12 @@ const Nav = (props) => (
           <Link className="nav-link" to="/createParkEvent">
             Go To The Park
           </Link>
-          <Link className="nav-link" to="/dogForm" >Add My Dog!</Link>
+          <Link className="nav-link" to="/dogForm" >
+            Add My Dog!
+          </Link>
+          <Link className="nav-link" to="/myNetwork">
+            My Network
+          </Link>
           <Link className="nav-link" to="/my-profile">
              My Profile
           </Link>
