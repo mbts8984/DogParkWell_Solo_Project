@@ -12,6 +12,7 @@ import homeParkSaga from './fetchHomeParkSaga.js';
 import updateUser from './updateUserSaga.js';
 import sendEventSaga from './sendEventSaga.js';
 import deleteEvent from './deleteEventSaga.js';
+import searchingSaga from './searchNetworkSaga'
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -34,6 +35,7 @@ export default function* rootSaga() {
     homeParkSaga(),
     updateUser(),
     sendEventSaga(),
-    deleteEvent()
+    deleteEvent(),
+    searchingSaga()
   ]);
 }

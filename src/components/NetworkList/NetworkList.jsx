@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, Button, Typography,} from '@material-ui/core';
-import SearchNetwork from '../SearchNetwork/SearchNetwork.jsx';
 
 class NetworkList extends Component {
 

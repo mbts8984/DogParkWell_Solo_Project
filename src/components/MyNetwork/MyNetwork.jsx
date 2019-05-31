@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, CardActions, Button, Typography, TextField, MenuItem, FormControl, FormLabel, FormGroup } from '@material-ui/core';
+import { Typography, TextField, MenuItem, FormControl, FormLabel, FormGroup } from '@material-ui/core';
 import SearchNetwork from '../SearchNetwork/SearchNetwork.jsx';
 import NetworkList from '../NetworkList/NetworkList.jsx';
 

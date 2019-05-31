@@ -19,6 +19,7 @@ const fetchHomeParkRouter = require('./routes/fetchHomeParkRouter.js');
 const updateUserRouter = require('./routes/updateUserRouter.js');
 const sendEventRouter = require('./routes/sendEventRouter.js');
 const deleteEventRouter = require('./routes/deleteEventRouter.js');
+const searchUserRouter = require('./routes/searchUserRouter.js');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -42,6 +43,7 @@ app.use('/api/getHomePark', fetchHomeParkRouter)
 app.use('/api/updateUser', updateUserRouter);
 app.use('/api/sendEvent', sendEventRouter)
 app.use('/api/deleteEvent', deleteEventRouter)
+app.use('/api/searchUsers', searchUserRouter)
 
 // Serve static files
 app.use(express.static('build'));
