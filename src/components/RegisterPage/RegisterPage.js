@@ -79,7 +79,7 @@ class RegisterPage extends Component {
           </h2>
         )}
       <Card className="registerCard">
-        <FormControl className="registerForm" onSubmit={this.registerUser}>
+        <FormControl className="registerForm" >
          <FormLabel variant="h5">Add Your Dog's Information</FormLabel>
           <div>
           <TextField label="Username"
@@ -211,7 +211,7 @@ class RegisterPage extends Component {
             />
           </div>
         <CardActions>
-          <Button className="register" type="submit" name="submit" value="register" variant="outlined" color="primary">Submit Human Info & Add My Dog</Button>
+          <Button className="register" type="submit" name="submit" value="register" variant="outlined" color="primary"  onClick={this.registerUser}>Submit Human Info & Add My Dog</Button>
         </CardActions>
         </FormControl>
         </Card>
