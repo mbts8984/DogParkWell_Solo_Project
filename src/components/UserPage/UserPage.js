@@ -11,6 +11,10 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 class UserPage extends Component {
 
+state = {
+  eventId: ''
+}
+
 //run get requests for both the network and playdate tables
 componentDidMount(){
   this.props.dispatch({ type: 'FETCH_NETWORK'})
@@ -19,7 +23,8 @@ componentDidMount(){
 
 
 handleEventDelete = (event) => {
-  console.log('in handleEventDelete');
+  console.log('in handleEventDelete with id', event);
+
 }
 render() {
   return(
@@ -54,7 +59,7 @@ render() {
             <ListItemText secondary={event.notes}><b>Where:</b> {event.dog_park} <b>When: </b>{event.date}
             </ListItemText>
             <ListItemSecondaryAction edge="end" aria-label="Delete">
-            <DeleteIcon onClick={this.handleEventDelete}/>
+            <DeleteIcon onClick={() => this.handleEventDelete(event.id)} value={event.id}/>
           </ListItemSecondaryAction>
             </ListItem>
         ))}
