@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import DogForm from '../DogForm/DogForm.jsx';
 import MyProfile from '../MyProfile/MyProfile.jsx';
 import GoToTheParkForm from '../GoToTheParkForm/GoToThePark.jsx';
+import MyNetwork from '../MyNetwork/MyNetwork.jsx';
 
 import './App.css';
 
@@ -80,6 +81,10 @@ class App extends Component {
             <ProtectedRoute
             exact path="/createParkEvent"
             component= { GoToTheParkForm }
+            />
+            <ProtectedRoute
+             exact path='/myNetwork'
+             component = {MyNetwork}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
