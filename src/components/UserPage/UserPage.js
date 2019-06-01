@@ -32,9 +32,9 @@ render() {
   <div>
     <img src="./Images/anniesmall.JPG" alt="great dane puppy standing on log" className="anniePic"/>
     
-    <h1 id="welcome">
+    <Typography>
       Welcome, { this.props.user.username }!
-    </h1>
+    </Typography>
     
     {/* listing of user's dog park network. Including people and dog names */}
     <Card>

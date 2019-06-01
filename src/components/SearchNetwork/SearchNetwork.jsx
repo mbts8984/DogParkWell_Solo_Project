@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, Button, Typography, TextField, FormControl, ListItem, List, ListItemText, Divider, FormLabel, FormGroup } from '@material-ui/core';
+import { Card, Button, Typography, TextField, FormControl, ListItem, List, ListItemText, Divider, FormLabel } from '@material-ui/core';
 
 class SearchNetwork extends Component {
 
@@ -18,7 +18,7 @@ class SearchNetwork extends Component {
         event.preventDefault();
         console.log('in searchNetwork');
         
-        this.props.dispatch({ type: 'SEARCH_NETWORK', 
+        this.props.dispatch({ type: 'SEARCH_USERS', 
         payload: {
             human_name: this.state.humanName
         }
