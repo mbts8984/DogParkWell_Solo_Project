@@ -5,6 +5,35 @@ import { withStyles } from '@material-ui/core/styles';
 
 import './RegisterPage.css';
 
+const styles = {
+  root: {
+    flexGrow: 1,
+    justify: 'center',
+    padding: '30px',
+    display: 'flex'
+  },
+  headDiv: {
+      //backgroundColor: '#282c34',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justify: 'center',
+      alignContent: 'center',
+      fontSize: `calc(10px + 2vmin)`,
+      //color: 'white'
+  },
+  regFormItem: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justify: 'center',
+    alignContent: 'center',
+
+  }
+   
+};
+
+
+
 class RegisterPage extends Component {
   state = {
     username: '',
@@ -60,17 +89,24 @@ class RegisterPage extends Component {
     this.setState({
       [propertyName]: event.target.value,
     });
-  }
+  };
+
 
   render() {
-     console.log('in handleInputChangeFor with dogpark data:', this.state.homeDogPark)
+    const {classes} = this.props;
+    
+    console.log('in handleInputChangeFor with dogpark data:', this.state.homeDogPark)
 
     //console.log('HERE IS THE DOG PARK DATA YOU REQUESTED', this.props.reduxState)
     return (
       <>
+    <Grid container className={classes.root} spacing={3}>
+      <Grid item className={classes.headDiv} spacing={3}>
        <Typography className="welcomeHeader" variant="h2" component="h1">Welcome To Dog Park Well</Typography>
        <Typography className="welcomeHeader" variant="h6" component="h1">Create Your Account To Start Meeting Up With Fellow Dog Lovers & Pooches!</Typography>
-      
+      </Grid>
+    </Grid>
+    <Grid spacing={4} container className={classes.root}>
       <div>
         {this.props.errors.registrationMessage && (
           <h2
@@ -80,10 +116,13 @@ class RegisterPage extends Component {
             {this.props.errors.registrationMessage}
           </h2>
         )}
-      <Card className="registerCard">
+      <Grid container className={classes.root} spacing={3}>  
+      <Card className={classes.root}>
         <FormControl className="registerForm" >
+        <Grid item spacing={3} className={classes.regFormItem}>
          <FormLabel variant="h5">Add Your Dog's Information</FormLabel>
-          <div>
+        </Grid>
+        <Grid item spacing={3} className={classes.regFormItem}>     
           <TextField label="Username"
             value={this.state.username}
             onChange={this.handleInputChangeFor('username')}
@@ -102,10 +141,11 @@ class RegisterPage extends Component {
                 onChange={this.handleInputChangeFor('username')}
               />
             </label> */}
-          </div>
+          
+          </Grid>
           {/* End username input */}
           {/* Password input */}
-          <div>
+          <Grid item className={classes.regFormItem} >
             <TextField label="Password"
             value={this.state.password}
             onChange={this.handleInputChangeFor('password')}
@@ -124,10 +164,10 @@ class RegisterPage extends Component {
                 onChange={this.handleInputChangeFor('password')}
               />
             </label> */}
-          </div>
+          </Grid>
           {/* end Password input */}
           {/* Human Name Input */}
-          <div>
+          <Grid item spacing={3} className={classes.regFormItem}>
             <TextField label="Human Name"
             value={this.state.humanName}
             onChange={this.handleInputChangeFor('humanName')}
@@ -136,10 +176,10 @@ class RegisterPage extends Component {
             helperText="Required"
             margin="normal"
             ></TextField>
-          </div>
+          </Grid>
           {/* End Human Name input */}
           {/* Email input area */}
-          <div>
+          <Grid item spacing={3} className={classes.regFormItem}>
             <TextField label="Email"
               value={this.state.email}
               onChange={this.handleInputChangeFor('email')}
@@ -148,10 +188,10 @@ class RegisterPage extends Component {
               helperText="Required"
               margin="normal"
             ></TextField>
-          </div>
+          </Grid>
           {/* End Email Input */}
           {/* Phone number input */}
-          <div>
+          <Grid item spacing={3} className={classes.regFormItem}>
             <TextField label="Phone Number"
             type="number"
             value={this.state.phoneNumber}
@@ -161,10 +201,10 @@ class RegisterPage extends Component {
             helperText="Required"
             margin="normal"
             ></TextField>
-          </div>
+          </Grid>
           {/* end phone number input */}
           {/* Preferred Contact Method Dropdown */}
-          <div> 
+          <Grid item spacing={3} className={classes.regFormItem}> 
             <TextField select
             label="Preferred Contact Method"
             value={this.state.preferredContactMethod}
@@ -179,10 +219,10 @@ class RegisterPage extends Component {
             {option.value}
           </MenuItem>))}
           </TextField>
-          </div>
+          </Grid>
             {/* end Preferred contact method dropdown */}
             {/* Home Dog Park dropdown mapping over the options in the 'dog park' table in DB */}
-          <div>
+          <Grid item spacing={3} className={classes.regFormItem}>
             <TextField select
             label="Home Dog Park"
             value={this.state.homeDogPark}
@@ -202,21 +242,24 @@ class RegisterPage extends Component {
               <option key={park.id} value={park.id}>{park.dog_park}</option>
             })}
           </select> */}
-          </div>
+          </Grid>
           {/* end Home Dog Park Drop Down */}
-          <div>
+          <Grid item spacing={3} className={classes.regFormItem}>
             <input
               className="register"
               type="submit"
               name="submit"
               value="Register"
             />
-          </div>
+          </Grid>
+        <Grid item spacing={3} className={classes.regFormItem}>
         <CardActions>
           <Button className="register" type="submit" name="submit" value="register" variant="outlined" color="primary"  onClick={this.registerUser}>Submit Human Info & Add My Dog</Button>
         </CardActions>
+        </Grid>
         </FormControl>
         </Card>
+        </Grid>
         <center>
           <button
             type="button"
@@ -227,6 +270,7 @@ class RegisterPage extends Component {
           </button>
         </center>
       </div>
+      </Grid>
       </>
     );
   }
@@ -240,5 +284,5 @@ const mapStateToProps = state => ({
   dogPark: state.dogParkReducer
 });
 
-export default connect(mapStateToProps)(RegisterPage);
+export default withStyles(styles) (connect(mapStateToProps)(RegisterPage));
 
