@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { Card, FormControl, CardActions, Button, Typography, TextField, MenuItem, FormLabel} from '@material-ui/core';
+import { Grid, Card, FormControl, CardActions, Button, Typography, TextField, MenuItem, FormLabel} from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
 import './RegisterPage.css';
 
 class RegisterPage extends Component {
