@@ -1,6 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, Button, Typography, TextField, FormControl, ListItem, List, ListItemText, Divider, FormLabel } from '@material-ui/core';
+import { Green, Card, Button, Typography, TextField, FormControl, ListItem, List, ListItemText, Divider, FormLabel, Grid } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
+
+const styles = {
+    searchForm: {
+     margin: '25px',
+     paddingBottom: '10px',
+     maxWidth: '1200px',
+     alignItems: 'center'
+
+    },
+    searchGrid: {
+     justify: 'center',
+     marginLeft: '100px',
+     alignItems: 'center'
+    },
+    input: {
+     width: '500px',
+     marginLeft:'68%'
+    },
+    searchNetworkBtn: {
+     width: '150px',
+     height: '50px', 
+     backgroundColor: 'Green',
+     marginLeft: '105%', 
+     marginTop: '15px'
+    }
+}
 
 class SearchNetwork extends Component {
 
@@ -27,23 +54,29 @@ class SearchNetwork extends Component {
 
 render() {
   console.log('human name state: ', this.state.humanName);
-  
+  const {classes} = this.props;
     return (
-    <div>
-     <Card>
+    <>
+    <Grid  className={classes.searchGrid}>
+     <Card className={classes.searchForm}>
       <FormControl className="networkSearchForm">
-       <FormLabel variant="h6">Search For Your Dog Park Friends</FormLabel>
+       
+       <Grid item medium={6} className={classes.input}>
         <div>
          <TextField
           label="Human's Name"
           value={this.state.humanName}
           variant="outlined"
           margin="normal"
+          helperText="Search For Your Dog Park Friends"
           fullWidth
           onChange={this.handleInputChangeFor('humanName')}
          ></TextField>
-        </div>
-        <Button className="searchNetworkBtn" type="submit" onClick={this.searchNetwork} variant="contained" color="secondary">Search</Button>
+         </div>
+        </Grid>
+      <Grid item small={4}>
+        <Button className={classes.searchNetworkBtn} type="submit" onClick={this.searchNetwork} variant="contained" color="secondary">Search</Button>
+      </Grid>
       </FormControl>
      </Card>
      <div>
@@ -61,7 +94,8 @@ render() {
          </ListItemText>
         </ListItem>
      </List>
-    </div>
+    </Grid>
+    </>
     )
 }
 }
@@ -75,4 +109,4 @@ const mapStateToProps = (reduxState) => {
     }
 }
 
-export default connect(mapStateToProps)(SearchNetwork);
+export default withStyles(styles) (connect(mapStateToProps)(SearchNetwork));

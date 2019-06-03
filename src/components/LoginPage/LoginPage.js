@@ -73,7 +73,7 @@ class LoginPage extends Component {
       <>
       <Grid container className={classes.root}>
        {/* <div className="loginBigDiv"> */}
-        <img item className={classes.imageGridItem} src="./Images/littleblue.jpeg" alt="little blue Dane"/>
+        <img className={classes.imageGridItem} src="./Images/littleblue.jpeg" alt="little blue Dane"/>
       
         {this.props.errors.loginMessage && (
           <h2

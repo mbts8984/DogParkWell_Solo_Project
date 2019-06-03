@@ -20,6 +20,15 @@ const styles = {
   },
   network: {
     margin: '30px'
+  },
+  anniePic:{
+    justify: 'center',
+    objectFit: 'cover',
+    height: '300px',
+    width: '100%'
+  },
+  headerName: {
+    paddingLeft: '30px'
   }
 }
 
@@ -46,9 +55,9 @@ render() {
   const {classes} = this.props;
   return(
   <div>
-    <img src="./Images/anniesmall.JPG" alt="great dane puppy standing on log" className="anniePic"/>
+    <img src="./Images/anniesmall.JPG" alt="great dane puppy standing on log" className={classes.anniePic}/>
     
-    <Typography>
+    <Typography variant="h4" className={classes.headerName}>
       Welcome, { this.props.user.username }!
     </Typography>
     

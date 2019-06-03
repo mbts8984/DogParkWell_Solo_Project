@@ -3,7 +3,8 @@ const pool = require('../modules/pool.js');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-   console.log('in searchUserRouter GET with req.body: ', req.params);
+   console.log('in searchUserRouter GET with req.params: ', req.query);
+   console.log('checking req: ',req);
    
    
     let query = `SELECT * FROM "user"
