@@ -2,12 +2,27 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './UserPage.css';
-import {List, Card, ListItem, ListItemText, Typography, Grid, ListItemSecondaryAction} from '@material-ui/core';
+import { List, Card, ListItem, ListItemText, Typography, Grid, ListItemSecondaryAction} from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
+import {withStyles} from '@material-ui/styles';
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
 // and then instead of `props.user.username` you could use `user.username`
+
+const styles = {
+  root: {
+
+  },
+  parkHistory: {
+    margin: '30px',
+
+  },
+  network: {
+    margin: '30px'
+  }
+}
+
 
 class UserPage extends Component {
 
@@ -28,6 +43,7 @@ handleEventDelete = (id) => {
 
 }
 render() {
+  const {classes} = this.props;
   return(
   <div>
     <img src="./Images/anniesmall.JPG" alt="great dane puppy standing on log" className="anniePic"/>
@@ -37,8 +53,9 @@ render() {
     </Typography>
     
     {/* listing of user's dog park network. Including people and dog names */}
-    <Card>
+    <Card className={classes.network}>
       <Typography variant="h5">Dog Park Friends</Typography>
+     <br/>
      <Grid>
        <div className="networkListDiv">
       <List>
@@ -50,8 +67,9 @@ render() {
      </Grid>
     </Card>
     
-    <Card>
+    <Card className={classes.parkHistory}>
       <Typography variant="h5">My Park History</Typography>
+      <br/>
     <Grid> 
     <div className="eventListDiv">
       <List>
@@ -84,4 +102,4 @@ const mapStateToProps = (state) => ({
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(UserPage);
+export default withStyles(styles) (connect(mapStateToProps)(UserPage));

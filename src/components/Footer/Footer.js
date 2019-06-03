@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Footer.css'
-import {Typography, Grid} from '@material-ui/core';
+import {Typography, Grid, Green} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 
@@ -13,14 +13,15 @@ const styles = {
   root: {
     justify: 'center',
     width: '100%',
-    paddingTop: '20px',
+    paddingTop: '10px',
+    paddingBottom: '10px',
     display: 'flex',
     marginTop: '80px',
-    backgroundColor: '#036d19',
+    backgroundColor: 'Green',
     overflow: 'hidden'
   }, 
   footer: {
-    backgroundColor: '#036d19',
+    backgroundColor: 'Green',
     overflow: 'hidden',
     color: 'white',
     alignContents: 'center'
@@ -35,10 +36,10 @@ class Footer extends Component {
         const {classes} = this.props;
 
     return(
-     <Grid container className={classes.root}>
+     <Grid container spacing={5} justify="center" className={classes.root}>
       
         {/* <div className='footerDiv'> */}
-        <Grid item justify="center" spacing={12}>
+        <Grid item >
         <Typography variant="body2" className={classes.footer}> Go Out. Scoop Poop. Dog Park Well.</Typography>
         </Grid>
         {/* </div> */}

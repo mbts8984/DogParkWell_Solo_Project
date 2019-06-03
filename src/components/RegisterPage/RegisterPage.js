@@ -10,7 +10,6 @@ const styles = {
     flexGrow: 1,
     justify: 'center',
     padding: '30px',
-    display: 'flex'
   },
   headDiv: {
       //backgroundColor: '#282c34',
@@ -100,13 +99,13 @@ class RegisterPage extends Component {
     //console.log('HERE IS THE DOG PARK DATA YOU REQUESTED', this.props.reduxState)
     return (
       <>
-    <Grid container className={classes.root} spacing={3}>
+    <Grid container justify="center" className={classes.root} spacing={3}>
       <Grid item className={classes.headDiv} spacing={3}>
        <Typography className="welcomeHeader" variant="h2" component="h1">Welcome To Dog Park Well</Typography>
        <Typography className="welcomeHeader" variant="h6" component="h1">Create Your Account To Start Meeting Up With Fellow Dog Lovers & Pooches!</Typography>
       </Grid>
-    </Grid>
-    <Grid spacing={4} container className={classes.root}>
+    {/* </Grid> */}
+    
       <div>
         {this.props.errors.registrationMessage && (
           <h2
@@ -116,7 +115,7 @@ class RegisterPage extends Component {
             {this.props.errors.registrationMessage}
           </h2>
         )}
-      <Grid container className={classes.root} spacing={3}>  
+      {/* <Grid container justify="center" className={classes.root} spacing={3}>   */}
       <Card className={classes.root}>
         <FormControl className="registerForm" >
         <Grid item spacing={3} className={classes.regFormItem}>
@@ -252,14 +251,14 @@ class RegisterPage extends Component {
               value="Register"
             />
           </Grid>
-        <Grid item spacing={3} className={classes.regFormItem}>
+        <Grid  item spacing={3} className={classes.regFormItem}>
         <CardActions>
           <Button className="register" type="submit" name="submit" value="register" variant="outlined" color="primary"  onClick={this.registerUser}>Submit Human Info & Add My Dog</Button>
         </CardActions>
         </Grid>
         </FormControl>
         </Card>
-        </Grid>
+        {/* </Grid> */}
         <center>
           <button
             type="button"
