@@ -7,25 +7,42 @@ const styles = {
     searchForm: {
      margin: '25px',
      paddingBottom: '10px',
-     maxWidth: '1200px',
+     width: '1200px',
      alignItems: 'center'
 
     },
     searchGrid: {
      justify: 'center',
-     marginLeft: '100px',
+     //marginLeft: '100px',
      alignItems: 'center'
     },
     input: {
      width: '500px',
-     marginLeft:'68%'
+     alignItems: 'center',
+     display: 'inline-block',
+     justify: 'center',
+     marginLeft: '350px'
     },
     searchNetworkBtn: {
      width: '150px',
      height: '50px', 
      backgroundColor: 'Green',
-     marginLeft: '105%', 
+    // marginLeft: '105%', 
      marginTop: '15px'
+    },
+    searchResultCard: {
+     width: '1200px',
+     marginTop: '5px',
+     marginBottom: '30px'
+    },
+    head: {
+     marginLeft: '480px',
+     marginTop:'20px',
+     marginBottom: '15px',
+     textDecoration: 'underline'  
+    },
+    listItem: {
+        marginLeft: '500px'
     }
 }
 
@@ -57,11 +74,11 @@ render() {
   const {classes} = this.props;
     return (
     <>
-    <Grid  className={classes.searchGrid}>
+    <Grid container justify="center" className={classes.searchGrid}>
      <Card className={classes.searchForm}>
       <FormControl className="networkSearchForm">
        
-       <Grid item medium={6} className={classes.input}>
+       <Grid container justify="center" medium={6} className={classes.input}>
         <div>
          <TextField
           label="Human's Name"
@@ -73,27 +90,31 @@ render() {
           onChange={this.handleInputChangeFor('humanName')}
          ></TextField>
          </div>
-        </Grid>
-      <Grid item small={4}>
+        
+      
         <Button className={classes.searchNetworkBtn} type="submit" onClick={this.searchNetwork} variant="contained" color="secondary">Search</Button>
       </Grid>
       </FormControl>
      </Card>
+    <Grid container justify="center" className={classes.searchResultGrid}>
+     <Card className={classes.searchResultCard}>
      <div>
-      <Typography variant="h4">Search Results</Typography>
+      <Typography className={classes.head} variant="h4">Search Results</Typography>
     </div>
      <List>
-        <ListItem>
+        <ListItem className={classes.listItem}>
          <ListItemText>
              <Typography variant="body1">Human & Dog1</Typography>
          </ListItemText>
         </ListItem>
         <ListItem>
-         <ListItemText>
+         <ListItemText className={classes.listItem}>
              <Typography variant="body1">Human & Dog2</Typography>
          </ListItemText>
         </ListItem>
      </List>
+     </Card>
+     </Grid>
     </Grid>
     </>
     )

@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, MenuItem, Button, Typography, ListItem, List, ListItemText, FormControl, FormLabel, TextField} from '@material-ui/core';
+import {withStyles} from '@material-ui/styles';
+
+const styles = {
+  dogPic: {
+    justify: 'center',
+    objectFit: 'cover',
+    height: '300px',
+    width: '100%'
+  }
+}
+
+
 class MyProfile extends Component {
 
   state = {
@@ -67,6 +79,7 @@ handleInputChangeFor = propertyName => (event) => {
   }
 
 render() {
+  const {classes}=this.props;
     // console.log('updated email state: ', this.state.email);
     // console.log('updated phone state: ', this.state.phoneNumber);
     // console.log('updated preferred contact method state: ', this.state.preferredContactMethod);
@@ -76,8 +89,8 @@ render() {
 
   if(this.state.buttonClicked) {
     displayToShow = (
-      <div>
-        <img src="./Images/anniesmall.JPG" alt="great dane puppy standing on log" className="anniePic" />
+      <>
+        <img src="./Images/dogsRunning.JPG" alt="great dane puppy standing on log" className={classes.dogPic} />
 
         <Card>
           <Typography variant="h5">{this.props.user.username}</Typography>
@@ -103,7 +116,7 @@ render() {
             <Button onClick={this.handleClick} variant="contained" color="primary">Update Info</Button>
           </div>
         </Card>
-      </div>
+      </>
     )
   } else {
     displayToShow = (
@@ -174,4 +187,4 @@ const mapStateToProps = (reduxState) => ({
     
 })
 
-export default connect(mapStateToProps)(MyProfile);
+export default withStyles(styles) (connect(mapStateToProps)(MyProfile));

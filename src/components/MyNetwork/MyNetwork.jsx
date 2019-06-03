@@ -22,7 +22,13 @@ const styles = {
     subtitle:{
         marginTop: '10px',
         marginBottom: '20px'
-    }
+    },
+  divSpacer: {
+    backgroundColor: '#A9A9A9',
+    width: '100%',
+    
+    height: '1px'
+  }
 }
 
 
@@ -43,9 +49,10 @@ return (
         </Grid>
     
     <SearchNetwork/>
-    <div>
+    {/* <div>
      <Typography variant="h4">My Friends</Typography>
-    </div>
+    </div> */}
+    <div className={classes.divSpacer}></div>
     <NetworkList/>
     </div>
     </Grid>
