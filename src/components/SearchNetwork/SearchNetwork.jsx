@@ -49,23 +49,28 @@ const styles = {
 class SearchNetwork extends Component {
 
     state = {
-        humanName: ''
+        humanName: '',
+        results: false
     }
 
     handleInputChangeFor = propertyName => (event) => {
         this.setState({
+            ...this.state,
             [propertyName]: event.target.value,
         });
     }
 
     searchNetwork = (event) => {
         event.preventDefault();
-        console.log('in searchNetwork');
+        console.log('in searchNetwork', this.state.results);
         
         this.props.dispatch({ type: 'SEARCH_USERS', 
         payload: {
-            human_name: this.state.humanName
+            query: this.state.humanName
         }
+        })
+        this.setState({
+            results: !this.state.results
         })
     }
 
@@ -74,7 +79,7 @@ render() {
   const {classes} = this.props;
     return (
     <>
-    <Grid container justify="center" className={classes.searchGrid}>
+    <Grid container size={4}justify="center" className={classes.searchGrid}>
      <Card className={classes.searchForm}>
       <FormControl className="networkSearchForm">
        
@@ -101,7 +106,16 @@ render() {
      <div>
       <Typography className={classes.head} variant="h4">Search Results</Typography>
     </div>
-     <List>
+     {/* <List>
+      {this.props.searchReducer.map(each => {
+        <ListItem key={each.id}></ListItem>
+      })}
+      </List> */}
+    
+
+
+
+
         <ListItem className={classes.listItem}>
          <ListItemText>
              <Typography variant="body1">Human & Dog1</Typography>
@@ -112,7 +126,7 @@ render() {
              <Typography variant="body1">Human & Dog2</Typography>
          </ListItemText>
         </ListItem>
-     </List>
+     
      </Card>
      </Grid>
     </Grid>
@@ -126,7 +140,8 @@ render() {
 const mapStateToProps = (reduxState) => {
     return {
         reduxState,
-        user: reduxState.user
+        user: reduxState.user,
+        searchReducer: reduxState.setSearchReducer
     }
 }
 

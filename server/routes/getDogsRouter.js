@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
                 WHERE "user".id = $1;`;
     pool.query(query, [req.user.id])
         .then((results) => {
-            console.log('GET from getDogsRouter router with results: ', results);
+          //  console.log('GET from getDogsRouter router with results: ', results);
             res.send(results.rows);
         }).catch((error) => {
             console.log('error in GET in getDogsRouter router: ', error);

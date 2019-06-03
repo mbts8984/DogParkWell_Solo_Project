@@ -8,7 +8,8 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = {
   root: {
     flexGrow: 1, 
-    wrap: 'wrap'
+    wrap: 'wrap',
+    marginBottom: '20px'
   },
   loginCard: {
     margin: '50px',

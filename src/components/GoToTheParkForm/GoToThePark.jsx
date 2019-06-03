@@ -1,8 +1,61 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, MenuItem, Button, Typography, FormControl, FormLabel, TextField } from '@material-ui/core';
+import { Card, Green, MenuItem, Button, Typography, FormControl, FormLabel, TextField, Grid } from '@material-ui/core';
 import "react-datepicker/dist/react-datepicker.css";
+import {withStyles} from '@material-ui/styles';
 
+const styles = {
+ root: {
+  paddingBottom: '75px',
+  
+ },
+  dogPic: {
+    justify: 'center',
+    objectFit: 'cover',
+    height: '300px',
+    width: '100%'
+  },
+  heading: {
+    marginTop: '30px',
+    marginBottom: '30px'
+    
+  },
+  subHead: {
+    marginTop: '10px'    
+  },
+  form: {
+    width: '700px',
+    height: '475px'
+  },
+  formLabelText: {
+    fontSize: '24px',
+    marginTop:'15px',
+    marginBottom: '15px',
+    marginLeft: '170px'
+  },
+  breakUpDiv: {
+    backgroundColor: 'gray',
+    height: '1px',
+    width: '900px',
+    marginTop: '20px'
+  },
+  playdateInput: {
+    marginTop: '15px',
+    marginLeft: '150px',
+    marginBottom: '10px',
+  },
+  playdateInputPark:{
+    marginTop: '15px',
+    marginLeft: '80px',
+    marginBottom: '10px',
+  },
+  eventButton: {
+    marginLeft: '150px',
+    marginTop: '25px',
+    marginBottom: '15px',
+    backgroundColor: 'Green'
+  }
+}
 
 class GoToTheParkForm extends Component {
 
@@ -47,6 +100,8 @@ handleClick = (event) => {
 }
 
 render(){
+  const {classes} = this.props;
+
     console.log('date state: ', this.state.date);
     console.log('time state: ', this.state.time);
     console.log('notes state: ', this.state.notes);
@@ -54,30 +109,27 @@ render(){
     
     
   return(
-    <div>
-     <img src="./Images/anniesmall.JPG" alt="great dane puppy standing on log" className="anniePic" />
+    <>
+    <Grid className={classes.root}>
+     <img src="./Images/tanna.JPG" alt="German Shepherd at park" className={classes.dogPic} />
+     <Grid container justify="center" className={classes.heading}>
           <Typography variant="h3">Ready To Go To The Park?</Typography>
-          <Typography variant="h6">Let Your DogParkWell Network Know When You're Going & Watch As Your Pups Get Tired Faster!</Typography>
-
-    <Card>
-     {/* <div>
-      <DatePicker
-       selected={this.state.startDate}
-       onChange={this.handleChange}
-      />
-     </div> */}
-     
+          <Typography className={classes.subHead} variant="h6">Let Your DogParkWell Network Know When You're Going & Watch As Your Pups Get Tired Faster!</Typography>
+            <div className={classes.breakUpDiv}></div>
+    </Grid>
+    <Grid container justify="center">
+     <Card className={classes.form}>
      <div>
      
       <FormControl>
-       <FormLabel>Add Your Next Dog Park Event</FormLabel>
+       <FormLabel className={classes.formLabelText}>Add Your Next Dog Park Event</FormLabel>
         <TextField
-         id="date"
+        id="date"
          label="Date"
          //value={this.state.date}
          type="date"
          defaultValue="2019-06-01"
-         className="calendar"
+         className={classes.playdateInput}
          onChange={this.handleInputChangeFor('date')}
         ></TextField>
      <TextField
@@ -86,7 +138,7 @@ render(){
         //value={this.state.time}
         type="time"
         defaultValue="12:00"
-        className="timePicker"
+        className={classes.playdateInput}
         onChange={this.handleInputChangeFor('time')}
        ></TextField>  
         <TextField
@@ -94,6 +146,7 @@ render(){
         value={this.state.notes}
         onChange={this.handleInputChangeFor('notes')}
         variant="outlined"
+        className={classes.playdateInput}
         margin="normal"
         ></TextField>
        <div>
@@ -101,6 +154,7 @@ render(){
             label="Dog Park You're Going To"
             value={this.state.dogPark}
             fullWidth
+            className={classes.playdateInputPark}
             variant="outlined"
             margin="normal"
             onChange={this.handleInputChangeFor('dogPark')}
@@ -118,13 +172,14 @@ render(){
          variant="contained"
          color="primary"
          onClick={this.handleClick}
+         className={classes.eventButton}
         >Add Your Event & Notify Your Network</Button>
       </FormControl>
      </div>
     </Card>
-
-    </div>
-
+    </Grid>
+    </Grid>
+    </>
 
         
     )
@@ -143,4 +198,4 @@ const mapStateToProps = (reduxState) => {
     }
 }
 
-export default connect(mapStateToProps)(GoToTheParkForm);
+export default withStyles(styles) (connect(mapStateToProps)(GoToTheParkForm));

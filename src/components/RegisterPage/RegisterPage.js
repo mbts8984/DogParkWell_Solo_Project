@@ -100,7 +100,7 @@ class RegisterPage extends Component {
     return (
       <>
     <Grid container justify="center" className={classes.root} spacing={3}>
-      <Grid item className={classes.headDiv} spacing={3}>
+      <Grid item className={classes.headDiv} >
        <Typography className="welcomeHeader" variant="h2" component="h1">Welcome To Dog Park Well</Typography>
        <Typography className="welcomeHeader" variant="h6" component="h1">Create Your Account To Start Meeting Up With Fellow Dog Lovers & Pooches!</Typography>
       </Grid>

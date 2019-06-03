@@ -6,7 +6,9 @@ function* searchUserSaga(action) {
   try {
     console.log('in searchUserSaga with action.payload', action.payload)
       //GET the users that have the name of the human_name in the DB
-    const response = yield axios.get('/api/searchUsers', action.payload);
+    const response = yield axios.get(`/api/searchUsers?search=${action.payload.query}`);
+    console.log('HERES THE RESPONSE', response);
+    
     // calls the return_search reducer to store the answer data
     yield put({ type: 'SET_SEARCH_ANSWER', payload: response.data });
   } catch (error) {

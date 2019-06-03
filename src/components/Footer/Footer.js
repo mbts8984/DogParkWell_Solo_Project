@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './Footer.css'
-import {Typography, Grid, Green} from '@material-ui/core';
+//import './Footer.css'
+import {Typography, Grid} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 
@@ -12,17 +12,17 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = {
   root: {
     justify: 'center',
-    width: '100%',
-    paddingTop: '10px',
-    paddingBottom: '10px',
-    display: 'flex',
-    marginTop: '80px',
+    width: '105%',
+   // paddingTop: '10px',
+    //paddingBottom: '10px',
+   // display: 'flex',
+   // marginTop: '20px',
     backgroundColor: 'Green',
     overflow: 'hidden'
   }, 
   footer: {
     backgroundColor: 'Green',
-    overflow: 'hidden',
+    //overflow: 'hidden',
     color: 'white',
     alignContents: 'center'
   }

@@ -5,7 +5,8 @@ import { withStyles } from '@material-ui/styles';
 
 const styles = {
     root:{
-     marginTop: '15px'
+     marginTop: '15px',
+     paddingBottom: '40px'
     },
     friendsCard: {
      width: '1200px'
