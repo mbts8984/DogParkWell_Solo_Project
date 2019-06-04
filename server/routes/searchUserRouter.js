@@ -8,17 +8,13 @@ router.get('/', (req, res) => {
    console.log('checking query stuff: ', `'%${req.query.search}%'`);
    
    
-    let query = `SELECT "user".human_name, 
-                "user".username, 
-                "dog_park".dog_park, 
-                "dog_data".dog_name, 
-                "dog_data".breed, 
-                "dog_data".color, 
-                "dog_data".age
+    let query = `SELECT "user".id, "user".human_name, "user".username, json_agg(json_build_object('dogName', "dog_data".dog_name, 'dogBreed', "dog_data".breed, 'dogColor', "dog_data".color ))
+                AS dogInfo 
                 FROM "user"
                 FULL OUTER JOIN "dog_data" ON "dog_data".username_id="user".id
                 FULL OUTER JOIN "dog_park" ON "dog_park".id="user".home_dog_park_id
                 WHERE "human_name" ILIKE  $1
+                GROUP BY "user".id
                 ;`;
     pool.query(query, [`%${req.query.search}%`])
         .then((results) => {
