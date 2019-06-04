@@ -13,6 +13,7 @@ import updateUser from './updateUserSaga.js';
 import sendEventSaga from './sendEventSaga.js';
 import deleteEvent from './deleteEventSaga.js';
 import searchingSaga from './searchNetworkSaga'
+import makeFriends from './addFriendSaga.js';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -36,6 +37,7 @@ export default function* rootSaga() {
     updateUser(),
     sendEventSaga(),
     deleteEvent(),
-    searchingSaga()
+    searchingSaga(),
+    makeFriends()
   ]);
 }

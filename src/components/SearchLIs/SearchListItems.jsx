@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Typography, ListItem, List, ListItemText, Grid } from '@material-ui/core';
+import { Button, Typography, Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 
 const styles = {
@@ -17,9 +17,12 @@ class SearchListItems extends Component {
  }
 
  handleClick = ( id ) => {
-  console.log('in handleClick with clicked persons id: ', id);
+  console.log('in handleClick with clicked persons id & username ID: ', id);
   
-  this.props.dispatch({ type: 'ADD_FRIEND', payload: id })
+  this.props.dispatch({ type: 'ADD_FRIEND', payload:
+                     {firstId: this.props.user.id,
+                      secondId: id  
+                     }})
  }
     
 
