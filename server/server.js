@@ -37,7 +37,7 @@ app.use('/api/user', userRouter);
 app.use('/api/dog-park', dogParkRouter);
 app.use('/api/addDog', addDogRouter);
 app.use('/api/playdate', playdateEventRouter);
-//app.use('/api/getClient', getUserRouter);
+//app.use('/api/getSearchResults', getUserRouter);
 app.use('/api/getDogs', getDogsRouter);
 app.use('/api/getHomePark', fetchHomeParkRouter)
 app.use('/api/updateUser', updateUserRouter);

@@ -1,6 +1,46 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, CardActions, Button, Typography, TextField, MenuItem, FormControl, FormLabel, FormGroup } from '@material-ui/core';
+import { Card, Grid, CardActions, Button, Typography, TextField, MenuItem, FormControl, FormLabel, FormGroup } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
+
+const styles = {
+ root: {
+   margin: '15px'
+ },
+    dogPic: {
+        justify: 'center',
+        objectFit: 'cover',
+        height: '300px',
+        width: '100%'
+    },
+ dogCardGrid: {
+   paddingBottom: '55px'
+ },
+ subHead: {
+     marginBottom:'20px'
+ },
+ dogCard: {
+  width: '1000px'
+ },
+ formLabel: {
+     fontSize: '24px',
+     marginTop: '20px',
+     marginLeft: '350px',
+     marginBottom: '20px'
+ },
+ inputField: {
+     marginLeft: '350px',
+     width: '300px'
+ },
+ addDogBtn: {
+     backgroundColor: 'green',
+     height: '45px',
+     width: '150px',
+     marginLeft: '410px',
+     marginBottom: '20px',
+     marginTop: '20px'
+ }
+}
 
 class DogForm extends Component {
     state = {
@@ -51,14 +91,22 @@ class DogForm extends Component {
 }
 
   render(){
+      const {classes}=this.props;
+
       console.log('Heres the full state: ', this.state)
       return(
-        <>
+    <>
+    <img src="./Images/littledane.JPG" alt="great dane puppy standing on log" className={classes.dogPic} />
+    <Grid container justify="center" spacing={2} className={classes.root}>
        <Typography className="welcomeHeader" variant="h2" component="h1">Welcome To Dog Park Well</Typography>
+    </Grid> 
+    <Grid container justify="center" className={classes.subHead}>
        <Typography className="welcomeHeader" variant="h6" component="h1">Add Your Dog & Start Meeting More 4-Legged Friends</Typography>
-       <Card>
-       <FormControl className="muiForm">
-        <FormLabel variant="h5"> Add Your Dog's Information</FormLabel>
+    </Grid>
+    <Grid container justify="center" spacing={2} className={classes.dogCardGrid}>  
+       <Card className={classes.dogCard}>
+       <FormControl>
+        <FormLabel className={classes.formLabel}> Add Your Dog's Information</FormLabel>
         <FormGroup>
         {/* dog name input field */}
         <div>
@@ -67,8 +115,8 @@ class DogForm extends Component {
            value={this.state.dogName}
            onChange={this.handleInputChangeFor('dogName')}
            variant="outlined"
-           fullWidth
            margin="normal"
+           className={classes.inputField}
           ></TextField>
         </div>
         {/* end dog name input */}
@@ -79,8 +127,8 @@ class DogForm extends Component {
            value={this.state.breed}
            onChange={this.handleInputChangeFor('breed')}
            variant="outlined"
-           fullWidth
            margin="normal"
+           className={classes.inputField}
           ></TextField>
         </div>
         {/* end breed input */}
@@ -92,8 +140,8 @@ class DogForm extends Component {
            value={this.state.age}
            onChange={this.handleInputChangeFor('age')}
            variant="outlined"
-           fullWidth
            margin="normal"
+           className={classes.inputField}
           ></TextField>
         </div>
         {/* end age input */}
@@ -103,11 +151,11 @@ class DogForm extends Component {
           select
           label="Gender"
           value={this.state.gender}
-          fullWidth
           variant="outlined"
           margin="normal"
           onChange={this.handleInputChangeFor('gender')}
           helperText="Select The Gender Of Your Pupper"
+          className={classes.inputField}
          >
           {this.genderOptions.map(gender => (
             <MenuItem key={gender.id} value={gender.value}>{gender.value}</MenuItem>
@@ -122,8 +170,8 @@ class DogForm extends Component {
            value={this.state.color}
            onChange={this.handleInputChangeFor('color')}
            variant="outlined"
-           fullWidth
            margin="normal"
+           className={classes.inputField}
           ></TextField>  
         </div>
         {/* end color input */}
@@ -133,11 +181,11 @@ class DogForm extends Component {
             select
             label="Dog Size"
             value={this.state.size}
-            fullWidth
             variant="outlined"
             margin="normal"
             helperText="What size would you classify your dog as?"
             onChange={this.handleInputChangeFor('size')}
+            className={classes.inputField}
             >
                 {this.sizeOptions.map(size => (
                  <MenuItem key={size.id} value={size.value}>{size.value}</MenuItem> 
@@ -146,12 +194,13 @@ class DogForm extends Component {
         </div>
         {/* end size input dropdown */}
         <CardActions>
-            <Button className="addDogBtn" type="submit" onClick={this.addDog} value="addDog" variant="contained" color="primary" >Add My Dog</Button>
+            <Button className={classes.addDogBtn} type="submit" onClick={this.addDog} value="addDog" variant="contained" color="primary" >Add My Dog</Button>
         </CardActions>
        </FormGroup>
        </FormControl>
        </Card>
-       </>
+    </Grid>
+    </>
       )
   }
 }
@@ -165,4 +214,4 @@ const mapStateToProps = (reduxState) => {
     }
 }
 
-export default connect(mapStateToProps)(DogForm);
+export default withStyles(styles) (connect(mapStateToProps)(DogForm));

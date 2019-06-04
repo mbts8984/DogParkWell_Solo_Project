@@ -6,7 +6,7 @@ import getDogParkSaga from './dogParkSaga';
 import setDogSaga from './addDogSaga.js';
 import eventSaga from './fetchEventSaga.js';
 import networkSaga from './fetchNetworkSaga.js';
-//import getUserSaga from './fetchUserSaga.js';
+//import getSearchUserResultSaga from './fetchUserSaga.js';
 import dogSaga from './fetchDogsSaga.js';
 import homeParkSaga from './fetchHomeParkSaga.js';
 import updateUser from './updateUserSaga.js';
@@ -30,7 +30,7 @@ export default function* rootSaga() {
     setDogSaga(),
     eventSaga(),
     networkSaga(),
-    //getUserSaga(),
+    //getSearchUserResultSaga(),
     dogSaga(),
     homeParkSaga(),
     updateUser(),

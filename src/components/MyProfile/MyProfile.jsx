@@ -1,6 +1,70 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, MenuItem, Button, Typography, ListItem, List, ListItemText, FormControl, FormLabel, TextField} from '@material-ui/core';
+import { Card, Grid, Green, MenuItem, Button, Typography, ListItem, List, ListItemText, FormControl, FormLabel, TextField} from '@material-ui/core';
+import {withStyles} from '@material-ui/styles';
+
+const styles = {
+  root: {
+    backgroundColor: '#424242',
+    paddingBottom:'75px'
+  },
+  dogPic: {
+    justify: 'center',
+    objectFit: 'cover',
+    height: '300px',
+    width: '100%'
+  },
+  profileCard: {
+    width: '750px',
+    marginTop: '30px'
+  },
+  head: {
+    width: '100%',
+    marginLeft: '42%',
+    marginTop: '20px',
+    textDecoration: 'underline',
+    color: 'white'
+  },
+  profileList: {
+    display: 'inline-block',
+    flexDirection: 'column',
+    alignContent: 'center'
+  },
+  profileItem: {
+    align: 'center',
+    //marginLeft: '400px'
+    marginLeft: '40%'
+  },
+  profileItemHead: {
+    align: 'center',
+    margin: '40%',
+    marginTop: '20px',
+    marginBottom: '15px'
+  },
+  updateButton: {
+    marginLeft: '40%',
+    marginBottom: '25px',
+    backgroundColor: '#26c6da'
+  },
+  updateFormCard: {
+    width: '750px',
+    marginTop: '30px',
+  },
+  updateGrid: {
+    display: 'inline-block'
+  },
+  updateHead: {
+    marginLeft: '35%',
+    marginTop: '20px'
+  },
+  submitButton: {
+    marginLeft: '40%',
+    marginBottom: '25px',
+    backgroundColor: '#26c6da'
+  }
+}
+
+
 class MyProfile extends Component {
 
   state = {
@@ -67,6 +131,9 @@ handleInputChangeFor = propertyName => (event) => {
   }
 
 render() {
+  const {classes}=this.props;
+  const { spacing } = this.state;
+
     // console.log('updated email state: ', this.state.email);
     // console.log('updated phone state: ', this.state.phoneNumber);
     // console.log('updated preferred contact method state: ', this.state.preferredContactMethod);
@@ -76,44 +143,52 @@ render() {
 
   if(this.state.buttonClicked) {
     displayToShow = (
-      <div>
-        <img src="./Images/anniesmall.JPG" alt="great dane puppy standing on log" className="anniePic" />
-
-        <Card>
-          <Typography variant="h5">{this.props.user.username}</Typography>
-          <div className="myProfileCardDiv">
+      <>
+        <img src="./Images/dogsRunning.JPG" alt="great dane puppy standing on log" className={classes.dogPic} />
+      <Grid container spacing={2} justify="center" className={classes.root}>
+        <Typography variant="h3" className={classes.head}>My Profile</Typography>
+        <Card className={classes.profileCard}>
+          <Typography className={classes.profileItemHead} variant="h4">{this.props.user.username}</Typography>
+          <Grid container className={classes.profileList}>
             <List>
-              <ListItemText><b>Dog Name(s)</b></ListItemText>
+              <ListItemText className={classes.profileItem}><b>Dog Name(s)</b></ListItemText>
               {this.props.dogs.map(dog => (
-                <ListItem key={dog.id}>
+                <ListItem className={classes.profileItem} key={dog.id}>
                   {dog.dog_name}
                 </ListItem>
               ))}
-              <ListItemText><b>Email</b></ListItemText>
-              <ListItem>{this.props.user.email}</ListItem>
-              <ListItemText><b>Phone Number</b></ListItemText>
-              <ListItem>{this.props.user.phone}</ListItem>
-              <ListItemText><b>Preferred Contact Method</b></ListItemText>
-              <ListItem>{this.props.user.preferred_contact_method}</ListItem>
-              <ListItemText><b>Home Dog Park</b></ListItemText>
+              <br/>
+              <ListItemText className={classes.profileItem}><b>Email</b></ListItemText>
+              <ListItem className={classes.profileItem}>{this.props.user.email}</ListItem>
+              <br/>
+              <ListItemText className={classes.profileItem}><b>Phone Number</b></ListItemText>
+              <ListItem className={classes.profileItem}>{this.props.user.phone}</ListItem>
+              <br/>
+              <ListItemText className={classes.profileItem}><b>Preferred Contact Method</b></ListItemText>
+              <ListItem className={classes.profileItem}>{this.props.user.preferred_contact_method}</ListItem>
+              <br/>
+              <ListItemText className={classes.profileItem}><b>Home Dog Park</b></ListItemText>
               {this.props.homePark.map(park => (
-                <ListItem key={park.id}>{park.dog_park}</ListItem>
+                <ListItem className={classes.profileItem} key={park.id}>{park.dog_park}</ListItem>
               ))}
             </List>
-            <Button onClick={this.handleClick} variant="contained" color="primary">Update Info</Button>
-          </div>
+              <br />
+            <Button className={classes.updateButton} onClick={this.handleClick} variant="contained" color="primary">Update Info</Button>
+          </Grid>
         </Card>
-      </div>
+      </Grid>
+      </>
     )
   } else {
     displayToShow = (
-    <div>
-        <img src="./Images/anniesmall.JPG" alt="great dane puppy standing on log" className="anniePic" />
-      <div className="updateFormDiv">
-          <Card className="updateFormCard">
-            <Typography variant="h5">Update Your Info</Typography>
+    <>
+      <img src="./Images/dogsRunning.JPG" alt="great dane puppy standing on log" className={classes.dogPic} />
+      <Grid container spacing={2} justify="center" className={classes.root}>
+        <Typography variant="h3" className={classes.head}>My Profile</Typography>
+          <Card className={classes.updateFormCard}>
+          <Grid container justify="center" className={classes.updateGrid}>
+            <Typography className={classes.updateHead} variant="h5">Update Your Info</Typography>
             <FormControl className="updateForm"></FormControl>
-            <FormLabel>Update Your Data & Submit</FormLabel>
             <div>
               <TextField
               label="Email"
@@ -121,7 +196,8 @@ render() {
               variant="outlined"
               fullWidth
               //helperText="Your Updated Email Here"
-              margin="normal"
+              // margin="normal"
+              className={classes.inputField}
               ></TextField>   
             </div>
             <div>
@@ -151,10 +227,12 @@ render() {
               </MenuItem>))}
               </TextField>
               </div>
-            <Button variant="contained" color="secondary" onClick={this.handleUpdate}>Save Changes</Button>
+            <Button className={classes.submitButton} variant="contained" color="secondary" onClick={this.handleUpdate}>Save Changes</Button>
+            </Grid>
           </Card>
-          </div>
-      </div>
+          
+        </Grid>   
+      </>
     )
   }
   return( displayToShow
@@ -174,4 +252,4 @@ const mapStateToProps = (reduxState) => ({
     
 })
 
-export default connect(mapStateToProps)(MyProfile);
+export default withStyles(styles) (connect(mapStateToProps)(MyProfile));

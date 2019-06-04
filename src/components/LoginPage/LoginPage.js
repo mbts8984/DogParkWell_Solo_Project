@@ -1,7 +1,44 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import  {TextField, Card, Button} from '@material-ui/core';
-import './LoginPage.css';
+import  {Grid, TextField, Card, Button} from '@material-ui/core';
+//import './LoginPage.css';
+import { withStyles } from '@material-ui/core/styles';
+
+
+const styles = {
+  root: {
+    flexGrow: 1, 
+    wrap: 'wrap',
+    marginBottom: '20px'
+  },
+  loginCard: {
+    margin: '50px',
+    alignContent:'center',
+    flexDirection: 'column',
+    height: '500px',
+    width: '600px'
+  },
+  imageGridItem: {
+    justify: 'left',
+    height: '100%',
+    objectFit: 'cover'
+  },
+  header: {
+    alignContent: 'center',
+    paddingLeft: '30px'
+  },
+  loginForm:{
+    backgroundColor:'#eeeeee',
+    width: '80%',
+    alignItems: 'center'
+  },
+  inputField:{
+    justify: 'center'
+  }
+}
+
+
+
 
 class LoginPage extends Component {
   state = {
@@ -32,9 +69,13 @@ class LoginPage extends Component {
   }
 
   render() {
+    const {classes} = this.props;
     return (
-      <div className="loginBigDiv">
-        <img src="./Images/littleblue.jpeg" alt="little blue Dane"/>
+      <>
+      <Grid container className={classes.root}>
+       {/* <div className="loginBigDiv"> */}
+        <img className={classes.imageGridItem} src="./Images/littleblue.jpeg" alt="little blue Dane"/>
+      
         {this.props.errors.loginMessage && (
           <h2
             className="alert"
@@ -43,21 +84,27 @@ class LoginPage extends Component {
             {this.props.errors.loginMessage}
           </h2>
         )}
-      <Card className="loginCard">
-        <h1 className="header">Stop Going To The Dog Park Alone</h1>
-        <form className="loginForm" onSubmit={this.login}>
+    <Grid>
+      <Card className={classes.loginCard}>
+       <Grid item className={classes.header}> 
+        <h1>Stop Going To The Dog Park Alone</h1>
+       </Grid>
+        <form className={classes.loginForm} onSubmit={this.login}>
           <h2>Login</h2>
+         <Grid item className={classes.inputField}>
           <div>
              <TextField
                 id="outlined-name"
                 label="Username"
-                className="inputField"
+                className={classes.inputField}
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}                
                 margin="normal"
                 variant="outlined"
               />
           </div>
+          </Grid>
+          <Grid item className={classes.inputField}>
           <div>
             <TextField
                 id="outlined-name"
@@ -70,6 +117,7 @@ class LoginPage extends Component {
                 variant="outlined"
               />
           </div>
+          </Grid>
           <div>
             <Button variant="contained" color="primary" type="submit" value="Log in" name="submit">Log In</Button>
           </div>
@@ -84,7 +132,11 @@ class LoginPage extends Component {
           </Button>
         </center>
         </Card>
-      </div>
+      </Grid>
+      </Grid>
+        </>
+      
+      
     );
   }
 }
@@ -96,4 +148,4 @@ const mapStateToProps = state => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps)(LoginPage);
+export default withStyles(styles) (connect(mapStateToProps)(LoginPage));

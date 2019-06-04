@@ -1,8 +1,42 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
+import {Typography, Grid, Green} from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
+
+const styles = {
+  nav: {
+    overflow: 'hidden',
+    backgroundColor: 'Green',
+    width: '100%'
+  },
+  navTitle: {
+    fontSize: '24px',
+    fontWeight: '700',
+    display: 'inline-block',
+    color: 'white',
+    paddingLeft: '10px'
+  },
+  navLink: {
+    float: 'left',
+    color: 'white',
+    backgroundColor: 'Green', 
+    textAlign: 'center',
+    padding: '24px',
+    fontSize:  '15px',
+    border: 'none',
+    cursor: 'pointer',
+    outline: '0'
+  },
+  navRight: {
+    float: 'right'
+  }
+
+}
+
 
 const Nav = (props) => (
   <div className="nav">
@@ -51,4 +85,4 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps)(Nav);
+export default withStyles(styles) (connect(mapStateToProps)(Nav));
