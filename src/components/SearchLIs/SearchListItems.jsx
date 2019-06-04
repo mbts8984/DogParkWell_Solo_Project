@@ -9,26 +9,40 @@ class SearchListItems extends Component {
  state = {
     key: 1
  }
+
+ handleClick = (event) => {
+  console.log('in handleClick');
+     
+ }
     
 
  render(){
    const {classes} = this.props;
        
     return(
-    <>
-        <List>
-            {this.props.searchReducer.map(event => (
-                <ListItem key={this.state.key++}>
-                    <ListItemText secondary={event.dog_park}><b>{event.human_name}</b> & {event.dog_name} The {event.color} {event.breed}</ListItemText>
-                 <Button variant="contained" color="primary">Add Friend</Button>
-                </ListItem>
+      <>
+        <div>
+            {this.props.searchReducer.map(person => {
+               return(
+               <div key={this.state.key++}>
+                <p secondary={person.dog_park}><b>{person.human_name}</b></p>
+                {person.doginfo.map(dog => {
+                    return(
+                     <p key={dog.dogName}>{dog.dogName} - A {dog.dogColor} {dog.dogBreed}</p>
+                    )})
+                }
+                <Button onClick={this.handleClick} variant="contained" color="primary">Add Friend</Button>
+                </div> 
+            )})}
+        </div>
+      </>
+    
 
-            ))}
-        </List>
-    </>
-        )
-    }
-}
+
+
+    )
+
+}}
 
 const mapStateToProps = (reduxState) => ({
     user: reduxState.user,
