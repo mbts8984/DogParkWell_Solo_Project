@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Green, Card, Button, Typography, TextField, FormControl, ListItem, List, ListItemText, Divider, FormLabel, Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
+import SearchListItems from '../SearchLIs/SearchListItems.jsx';
 
 const styles = {
     searchForm: {
@@ -77,7 +78,11 @@ class SearchNetwork extends Component {
 render() {
   console.log('human name state: ', this.state.humanName);
   const {classes} = this.props;
-    return (
+
+  let displayToShow;
+
+  if(this.state.results){
+    displayToShow = (
     <>
     <Grid container size={4}justify="center" className={classes.searchGrid}>
      <Card className={classes.searchForm}>
@@ -106,31 +111,56 @@ render() {
      <div>
       <Typography className={classes.head} variant="h4">Search Results</Typography>
     </div>
-     {/* <List>
-      {this.props.searchReducer.map(each => {
-        <ListItem key={each.id}></ListItem>
-      })}
-      </List> */}
-    
+        <SearchListItems />
 
-
-
+    </Card>
+     </Grid>
+    </Grid>
+    </>
+      )
+  } else {
+    displayToShow = (
+        <>
+    <Grid container size={4}justify="center" className={classes.searchGrid}>
+     <Card className={classes.searchForm}>
+      <FormControl className="networkSearchForm">
+       
+       <Grid container justify="center" medium={6} className={classes.input}>
+        <div>
+         <TextField
+          label="Human's Name"
+          value={this.state.humanName}
+          variant="outlined"
+          margin="normal"
+          helperText="Search For Your Dog Park Friends"
+          fullWidth
+          onChange={this.handleInputChangeFor('humanName')}
+         ></TextField>
+         </div>
+        
+        <Button className={classes.searchNetworkBtn} type="submit" onClick={this.searchNetwork} variant="contained" color="secondary">Search</Button>
+      </Grid>
+      </FormControl>
+     </Card>
+    <Grid container justify="center" className={classes.searchResultGrid}>
+     <Card className={classes.searchResultCard}>
+     <div>
+      <Typography className={classes.head} variant="h4">Search Results</Typography>
+    </div>
 
         <ListItem className={classes.listItem}>
          <ListItemText>
-             <Typography variant="body1">Human & Dog1</Typography>
+             <Typography variant="body1">No Results Currently</Typography>
          </ListItemText>
         </ListItem>
-        <ListItem>
-         <ListItemText className={classes.listItem}>
-             <Typography variant="body1">Human & Dog2</Typography>
-         </ListItemText>
-        </ListItem>
-     
      </Card>
      </Grid>
     </Grid>
     </>
+    )
+  }
+    return (
+     displayToShow
     )
 }
 }

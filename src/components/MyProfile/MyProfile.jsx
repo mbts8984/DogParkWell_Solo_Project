@@ -149,7 +149,7 @@ render() {
         <Typography variant="h3" className={classes.head}>My Profile</Typography>
         <Card className={classes.profileCard}>
           <Typography className={classes.profileItemHead} variant="h4">{this.props.user.username}</Typography>
-          <Grid container medium className={classes.profileList}>
+          <Grid container className={classes.profileList}>
             <List>
               <ListItemText className={classes.profileItem}><b>Dog Name(s)</b></ListItemText>
               {this.props.dogs.map(dog => (
