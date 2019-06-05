@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, Grid, Typography, List, ListItem} from '@material-ui/core';
+import { Card, Grid, Typography, List, ListItem, ListItemText} from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 
 const styles = {
@@ -9,7 +9,7 @@ const styles = {
      paddingBottom: '40px'
     },
     friendsCard: {
-     width: '1200px'
+     width: '1200px',
     },
     head: {
      marginLeft: '500px',
@@ -17,12 +17,16 @@ const styles = {
      marginBottom: '15px',
      textDecoration: 'underline'
     },
-    listItem: {
+    ListItem: {
      marginLeft: '500px'
     }
 }
 
 class NetworkList extends Component {
+
+    componentDidMount(){
+     this.props.dispatch({ type: 'FETCH_NETWORK'})
+    }
 
 render() {    
     const {classes} = this.props;    
@@ -33,9 +37,12 @@ return (
     <Typography className={classes.head} variant="h4">My Network</Typography>
     <br/>
     <List>
-     <ListItem className={classes.listItem}>PERSON AND DOG</ListItem>
-     <ListItem className={classes.listItem}>PERSON AND DOG</ListItem>
-    </List>
+       {this.props.network.map(friend => (
+         <ListItem key={friend.friend_id}>
+          <ListItemText secondary={friend.dog_park}><b>{friend.human_name} & {friend.dog_name}</b> - A {friend.color} {friend.breed}</ListItemText>
+         </ListItem>
+       ))}
+      </List>
   </Card>
  </Grid>
 </>
@@ -48,7 +55,8 @@ return (
 const mapStateToProps = (reduxState) => {
     return {
         reduxState,
-        user: reduxState.user
+        user: reduxState.user,
+        network: reduxState.setNetworkReducer
     }
 }
 

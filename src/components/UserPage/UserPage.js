@@ -28,7 +28,8 @@ const styles = {
     width: '100%'
   },
   headerName: {
-    paddingLeft: '30px'
+    paddingLeft: '30px',
+    marginTop: '25px'
   }
 }
 
@@ -68,8 +69,13 @@ render() {
      <Grid>
        <div className="networkListDiv">
       <List>
+       {this.props.network.map(friend => (
+         <ListItem key={friend.friend_id}>
+          <ListItemText secondary={friend.dog_park}><b>{friend.human_name} & {friend.dog_name}</b> - A {friend.color} {friend.breed}</ListItemText>
+         </ListItem>
+       ))}
         <ListItem>
-          <ListItemText secondary="Met at the Great Dane May Meetup in Eagan">Sarah & Cash</ListItemText>
+          <ListItemText secondary="Add Some Friends & Watch Your Network Grow">Humans & Dogs</ListItemText>
         </ListItem>
       </List>
      </div>
@@ -107,7 +113,8 @@ render() {
 // const mapStateToProps = ({user}) => ({ user });
 const mapStateToProps = (state) => ({
   user: state.user,
-  event: state.setEventReducer
+  event: state.setEventReducer,
+  network: state.setNetworkReducer
 });
 
 // this allows us to use <App /> in index.js

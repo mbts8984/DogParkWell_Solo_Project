@@ -1,40 +1,55 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Typography, ListItem, List, ListItemText, Grid } from '@material-ui/core';
+import { Button, Typography, Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 
 const styles = {
+  root: {
+      marginBottom: '35px'
+  },
+  listStuff: {
+      marginLeft:'30px'
+  }
 }
 class SearchListItems extends Component {
  state = {
     key: 1
  }
 
- handleClick = (event) => {
-  console.log('in handleClick');
-     
+ handleClick = ( id ) => {
+  console.log('in handleClick with clicked persons id & username ID: ', id);
+  
+  this.props.dispatch({ type: 'ADD_FRIEND', payload:
+                     {firstId: this.props.user.id,
+                      secondId: id  
+                     }})
  }
     
 
  render(){
+     
    const {classes} = this.props;
        
     return(
       <>
-        <div>
+      <Grid container justify="center">
+        <div className={classes.root}>
             {this.props.searchReducer.map(person => {
                return(
-               <div key={this.state.key++}>
-                <p secondary={person.dog_park}><b>{person.human_name}</b></p>
+               <div className={classes.listStuff} key={this.state.key++}>
+                <p secondary={person.dog_park}><b>Human: {person.human_name}</b></p>
+                <p><b>Dogs:</b></p>
                 {person.doginfo.map(dog => {
                     return(
-                     <p key={dog.dogName}>{dog.dogName} - A {dog.dogColor} {dog.dogBreed}</p>
+                     <p key={dog.dogName}><b>{dog.dogName}</b> -<i> A {dog.dogColor} {dog.dogBreed}</i></p>
                     )})
                 }
-                <Button onClick={this.handleClick} variant="contained" color="primary">Add Friend</Button>
+
+                <Button onClick={() => this.handleClick(person.id)} variant="contained" color="primary">Add Friend</Button>
                 </div> 
             )})}
         </div>
+       </Grid>
       </>
     
 
