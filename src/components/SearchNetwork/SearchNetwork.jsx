@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Green, Card, Button, Typography, TextField, FormControl, ListItem, List, ListItemText, Divider, FormLabel, Grid } from '@material-ui/core';
-import { withStyles } from '@material-ui/styles';
+import { Card, Button, Typography, TextField, FormControl, ListItem, List, ListItemText, FormLabel, Grid } from '@material-ui/core';
 import SearchListItems from '../SearchLIs/SearchListItems.jsx';
+import {withStyles, ThemeProvider} from '@material-ui/styles';
+import {createMuiTheme} from '@material-ui/core/styles';
+
+
+const theme =createMuiTheme({
+  palette: {
+    primary: {main: '#4caf50'},
+    secondary: { main: '#81d4fa'}
+  }
+})
 
 const styles = {
     searchForm: {
@@ -27,9 +36,10 @@ const styles = {
     searchNetworkBtn: {
      width: '150px',
      height: '50px', 
-     backgroundColor: 'Green',
-    // marginLeft: '105%', 
-     marginTop: '15px'
+     marginTop: '15px',
+     backgroundColor: '#81d4fa',
+     color: 'black',
+     marginLeft: '35%'
     },
     searchResultCard: {
      width: '1200px',
@@ -71,7 +81,7 @@ class SearchNetwork extends Component {
         }
         })
         this.setState({
-            results: !this.state.results
+            results: true
         })
     }
 
@@ -84,6 +94,7 @@ render() {
   if(this.state.results){
     displayToShow = (
     <>
+    
     <Grid container size={4}justify="center" className={classes.searchGrid}>
      <Card className={classes.searchForm}>
       <FormControl className="networkSearchForm">
@@ -101,8 +112,9 @@ render() {
          ></TextField>
          </div>
         
-      
-        <Button className={classes.searchNetworkBtn} type="submit" onClick={this.searchNetwork} variant="contained" color="secondary">Search</Button>
+      <ThemeProvider theme={theme}>
+        <Button className={classes.searchNetworkBtn} color="secondary" type="submit" onClick={this.searchNetwork} variant="contained">Search</Button>
+       </ThemeProvider>
       </Grid>
       </FormControl>
      </Card>

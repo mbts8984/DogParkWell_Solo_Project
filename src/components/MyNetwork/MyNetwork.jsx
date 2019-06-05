@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Grid, Typography, FormControl, FormLabel, FormGroup } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import SearchNetwork from '../SearchNetwork/SearchNetwork.jsx';
 import NetworkList from '../NetworkList/NetworkList.jsx';
-import { withStyles } from '@material-ui/styles';
+import {withStyles, ThemeProvider} from '@material-ui/styles';
+//import {createMuiTheme} from '@material-ui/core/styles';
+
+
+
 
 const styles = {
     root: {
@@ -38,6 +42,7 @@ render() {
     const {classes} = this.props;       
 return (
    <>
+   <ThemeProvider>
    <Grid container className={classes.root}>
    <div>
         <img src="./Images/tailBiting.JPG" alt="great dane puppy standing on log" className={classes.headerPic} />
@@ -56,6 +61,7 @@ return (
     <NetworkList/>
     </div>
     </Grid>
+    </ThemeProvider>
     </>
         )
     }

@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, Grid, Green, MenuItem, Button, Typography, ListItem, List, ListItemText, FormControl, FormLabel, TextField} from '@material-ui/core';
-import {withStyles} from '@material-ui/styles';
+import { Card, Grid, MenuItem, Button, Typography, ListItem, List, ListItemText, FormControl, TextField} from '@material-ui/core';
+import {withStyles, ThemeProvider} from '@material-ui/styles';
+import {createMuiTheme} from '@material-ui/core/styles';
+
+
+const theme =createMuiTheme({
+  palette: {
+    primary: {main: '#4caf50'},
+    secondary: { main: '#81d4fa'}
+  }
+})
 
 const styles = {
   root: {
     backgroundColor: '#424242',
     paddingBottom:'75px'
+  },
+  inputField: {
+   padding: '10px'
   },
   dogPic: {
     justify: 'center',
@@ -44,7 +56,6 @@ const styles = {
   updateButton: {
     marginLeft: '40%',
     marginBottom: '25px',
-    backgroundColor: '#26c6da'
   },
   updateFormCard: {
     width: '750px',
@@ -60,7 +71,7 @@ const styles = {
   submitButton: {
     marginLeft: '40%',
     marginBottom: '25px',
-    backgroundColor: '#26c6da'
+    marginTop: '25px'
   }
 }
 
@@ -132,7 +143,7 @@ handleInputChangeFor = propertyName => (event) => {
 
 render() {
   const {classes}=this.props;
-  const { spacing } = this.state;
+ 
 
     // console.log('updated email state: ', this.state.email);
     // console.log('updated phone state: ', this.state.phoneNumber);
@@ -145,6 +156,7 @@ render() {
     displayToShow = (
       <>
         <img src="./Images/dogsRunning.JPG" alt="great dane puppy standing on log" className={classes.dogPic} />
+     <ThemeProvider theme={theme}>
       <Grid container spacing={2} justify="center" className={classes.root}>
         <Typography variant="h3" className={classes.head}>My Profile</Typography>
         <Card className={classes.profileCard}>
@@ -173,16 +185,18 @@ render() {
               ))}
             </List>
               <br />
-            <Button className={classes.updateButton} onClick={this.handleClick} variant="contained" color="primary">Update Info</Button>
+            <Button className={classes.updateButton} onClick={this.handleClick} variant="contained" color="secondary">Update Info</Button>
           </Grid>
         </Card>
       </Grid>
+     </ThemeProvider>
       </>
     )
   } else {
     displayToShow = (
     <>
       <img src="./Images/dogsRunning.JPG" alt="great dane puppy standing on log" className={classes.dogPic} />
+      <ThemeProvider theme={theme}>
       <Grid container spacing={2} justify="center" className={classes.root}>
         <Typography variant="h3" className={classes.head}>My Profile</Typography>
           <Card className={classes.updateFormCard}>
@@ -194,7 +208,7 @@ render() {
               label="Email"
               onChange={this.handleInputChangeFor('email')}
               variant="outlined"
-              fullWidth
+              
               //helperText="Your Updated Email Here"
               // margin="normal"
               className={classes.inputField}
@@ -206,8 +220,8 @@ render() {
               type="number"
               onChange={this.handleInputChangeFor('phoneNumber')}
               variant="outlined"
-              fullWidth
-              //helperText="Your Updated Phone Number Here"
+              
+              className={classes.inputField}
               margin="normal"
               ></TextField>
             </div>
@@ -215,11 +229,11 @@ render() {
               <TextField select
               label="Preferred Contact Method"
               value={this.state.preferredContactMethod}
-              fullWidth
               variant="outlined"
               margin="normal"
               onChange={this.handleInputChangeFor('preferredContactMethod')}
               helperText="Please Select How You Prefer To Receive Notifications"
+              className={classes.inputField}
               >
                   {this.contactMethods.map(option => (
               <MenuItem key={option.value} value={option.value}>
@@ -227,11 +241,11 @@ render() {
               </MenuItem>))}
               </TextField>
               </div>
-            <Button className={classes.submitButton} variant="contained" color="secondary" onClick={this.handleUpdate}>Save Changes</Button>
+            <Button className={classes.submitButton} variant="contained" color="primary" onClick={this.handleUpdate}>Save Changes</Button>
             </Grid>
           </Card>
-          
-        </Grid>   
+        </Grid> 
+      </ThemeProvider>  
       </>
     )
   }

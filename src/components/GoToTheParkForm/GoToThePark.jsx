@@ -2,7 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, MenuItem, Button, Typography, FormControl, FormLabel, TextField, Grid } from '@material-ui/core';
 import "react-datepicker/dist/react-datepicker.css";
-import {withStyles} from '@material-ui/styles';
+import { withStyles, ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: { main: '#4caf50' },
+    secondary: { main: '#81d4fa' }
+  }
+})
 
 const styles = {
  root: {
@@ -53,7 +61,6 @@ const styles = {
     marginLeft: '150px',
     marginTop: '25px',
     marginBottom: '15px',
-    backgroundColor: 'Green'
   }
 }
 
@@ -115,11 +122,12 @@ render(){
     <Grid className={classes.root}>
      <img src="./Images/tanna.JPG" alt="German Shepherd at park" className={classes.dogPic} />
      <Grid container justify="center" className={classes.heading}>
-          <Typography variant="h3">Ready To Go To The Park?</Typography>
+          <Typography variant="h2">Ready To Go To The Park?</Typography>
           <Typography className={classes.subHead} variant="h6">Let Your DogParkWell Network Know When You're Going & Watch As Your Pups Get Tired Faster!</Typography>
             <div className={classes.breakUpDiv}></div>
     </Grid>
     <Grid container justify="center">
+     <ThemeProvider theme={theme}> 
      <Card className={classes.form}>
      <div>
      
@@ -139,7 +147,7 @@ render(){
         label="Dog Park Time"
         //value={this.state.time}
         type="time"
-        defaultValue="12:00"
+        defaultValue="00:15"
         className={classes.playdateInput}
         onChange={this.handleInputChangeFor('time')}
        ></TextField>  
@@ -170,15 +178,16 @@ render(){
        </div>
        
        
-        <Button
+      <Button
          variant="contained"
-         color="primary"
+         color="secondary"
          onClick={this.handleClick}
          className={classes.eventButton}
         >Add Your Event & Notify Your Network</Button>
       </FormControl>
      </div>
     </Card>
+    </ThemeProvider>
     </Grid>
     </Grid>
     </>
