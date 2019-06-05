@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, Green, MenuItem, Button, Typography, FormControl, FormLabel, TextField, Grid } from '@material-ui/core';
+import { Card, MenuItem, Button, Typography, FormControl, FormLabel, TextField, Grid } from '@material-ui/core';
 import "react-datepicker/dist/react-datepicker.css";
 import {withStyles} from '@material-ui/styles';
 
@@ -94,8 +94,9 @@ handleClick = (event) => {
        id: this.props.user.id 
     }
     });
+    alert('Your Network Has Been Alerted! Get Ready To DogParkWell!')
 
-    this.props.history.push('/');
+    //this.props.history.push('/');
     
 }
 
