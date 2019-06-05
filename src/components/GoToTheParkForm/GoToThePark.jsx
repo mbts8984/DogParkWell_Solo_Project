@@ -69,6 +69,7 @@ state = {
 //call in the list of DPs from the DB
 componentDidMount(){
     this.props.dispatch({ type: 'FETCH_PARKS'})
+    this.props.dispatch({ type: 'FETCH_NETWORK'})
   }
 
 //update the state for each property on change
@@ -195,7 +196,8 @@ const mapStateToProps = (reduxState) => {
     return {
         reduxState,
         user: reduxState.user,
-        dogPark: reduxState.dogParkReducer 
+        dogPark: reduxState.dogParkReducer,
+
     }
 }
 

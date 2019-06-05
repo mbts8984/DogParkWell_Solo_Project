@@ -24,8 +24,7 @@
     "react-scripts": "^3.0.1",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "redux-saga": "^1.0.2",
-    "twilio": "^3.31.1"
+    "redux-saga": "^1.0.2"
   },
   "scripts": {
     "start": "node server/server.js",
@@ -36,7 +35,8 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "twilio": "^3.31.1"
   },
   "browserslist": [
     ">0.2%",
