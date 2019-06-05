@@ -5,8 +5,11 @@ const router = express.Router();
 
 //GET route that gets every friend that the user that is logged in has
 router.get('/', (req, res) => {
-    let query = `SELECT "user".human_name, "dog_park".dog_park, friend_id.friend_id, 
-                "dog_data".dog_name, "dog_data".breed, "dog_data".color
+
+    console.log('in fetchNetworkRouter with user id: ', req.user.id );
+    
+
+    let query = `SELECT "user".human_name, "user".email, "user".phone, "dog_park".dog_park, friend_id.friend_id, "dog_data".dog_name, "dog_data".breed, "dog_data".color
                 FROM
                 (SELECT personone as friend_id FROM network WHERE persontwo = $1
                 UNION
