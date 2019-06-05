@@ -5,6 +5,9 @@ require('dotenv').config();
 const app = express();
 const bodyParser = require('body-parser');
 const sessionMiddleware = require('./modules/session-middleware');
+const client = require('twilio')(
+  process.env.TWILIO_SID,
+  process.allowedNodeEnvironmentFlags.TWILIO_TOKEN );
 
 const passport = require('./strategies/user.strategy');
 
