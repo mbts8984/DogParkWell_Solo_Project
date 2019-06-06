@@ -4,9 +4,14 @@ import { Grid, Typography } from '@material-ui/core';
 import SearchNetwork from '../SearchNetwork/SearchNetwork.jsx';
 import NetworkList from '../NetworkList/NetworkList.jsx';
 import {withStyles, ThemeProvider} from '@material-ui/styles';
-//import {createMuiTheme} from '@material-ui/core/styles';
+import {createMuiTheme} from '@material-ui/core/styles';
 
-
+const theme = createMuiTheme({
+  palette: {
+    primary: { main: '#4caf50' },
+    secondary: { main: '#81d4fa' }
+  }
+})
 
 
 const styles = {
@@ -43,7 +48,7 @@ render() {
 return (
    <>
    <ThemeProvider>
-   <Grid container className={classes.root}>
+   <Grid container theme={theme} className={classes.root}>
    <div>
         <img src="./Images/tailBiting.JPG" alt="great dane puppy standing on log" className={classes.headerPic} />
          <Grid container justify="center" className={classes.title}>

@@ -18,7 +18,8 @@ const styles = {
     paddingBottom:'75px'
   },
   inputField: {
-   padding: '10px'
+   padding: '10px',
+   width: '450px'
   },
   dogPic: {
     justify: 'center',
@@ -158,7 +159,7 @@ render() {
         <img src="./Images/dogsRunning.JPG" alt="great dane puppy standing on log" className={classes.dogPic} />
      <ThemeProvider theme={theme}>
       <Grid container spacing={2} justify="center" className={classes.root}>
-        <Typography variant="h3" className={classes.head}>My Profile</Typography>
+        <Typography variant="h2" className={classes.head}>My Profile</Typography>
         <Card className={classes.profileCard}>
           <Typography className={classes.profileItemHead} variant="h4">{this.props.user.username}</Typography>
           <Grid container className={classes.profileList}>
@@ -203,6 +204,7 @@ render() {
           <Grid container justify="center" className={classes.updateGrid}>
             <Typography className={classes.updateHead} variant="h5">Update Your Info</Typography>
             <FormControl className="updateForm"></FormControl>
+           <Grid container justify="center">
             <div>
               <TextField
               label="Email"
@@ -214,6 +216,8 @@ render() {
               className={classes.inputField}
               ></TextField>   
             </div>
+           </Grid>
+           <Grid container justify="center">
             <div>
               <TextField
               label="Phone Number"
@@ -225,6 +229,8 @@ render() {
               margin="normal"
               ></TextField>
             </div>
+           </Grid>
+          <Grid container justify="center">
           <div> 
               <TextField select
               label="Preferred Contact Method"
@@ -241,6 +247,7 @@ render() {
               </MenuItem>))}
               </TextField>
               </div>
+             </Grid>
             <Button className={classes.submitButton} variant="contained" color="primary" onClick={this.handleUpdate}>Save Changes</Button>
             </Grid>
           </Card>

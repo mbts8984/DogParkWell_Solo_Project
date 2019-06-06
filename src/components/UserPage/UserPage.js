@@ -20,9 +20,6 @@ const theme =createMuiTheme({
 // and then instead of `props.user.username` you could use `user.username`
 
 const styles = {
-  root: {
-
-  },
   parkHistory: {
     margin: '30px',
 
@@ -31,10 +28,10 @@ const styles = {
     margin: '30px'
   },
   anniePic:{
-    justify: 'center',
     objectFit: 'cover',
     height: '300px',
-    width: '100%'
+    width: '100%',
+    objectPosition:'10% 50%'
   },
   headerName: {
     paddingLeft: '30px',
@@ -88,9 +85,9 @@ render() {
         </ListItem>
       </List>
      </div>
-     <ThemeProvider theme={theme}>
+     {/* <ThemeProvider theme={theme}>
      <Button variant="contained" color="primary">COLOR SHIT</Button>
-     </ThemeProvider>
+     </ThemeProvider> */}
      </Grid>
     </Card>
     
@@ -113,8 +110,9 @@ render() {
      </div>
     </Grid>
     </Card>
+    <div></div>
     {/* <p>Your ID is: {props.user.id}</p> */}
-    <LogOutButton className="log-in" />
+    {/* <LogOutButton className="log-in" /> */}
   </div>
 
   );

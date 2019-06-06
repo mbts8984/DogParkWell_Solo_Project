@@ -3,24 +3,25 @@
     font-size: 24px;
     font-weight: 700;
     display: inline-block;
-    color: #f2f2f2;
+    color: white;
     padding-left: 10px;
+    padding-top: 12px
 }
 
 .nav {
   overflow: hidden;
-  background-color: #2e7d32;
+  background-color: #388e3c;
   width: 100%;
 }
 
 .nav-link {
   float: left;
   color: #f2f2f2;
-  background-color: #2e7d32;
+  background-color: #388e3c;
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 14px;
 
   /* these last two make the logout button in
   the nav bar look like another link */

@@ -101,6 +101,7 @@ render() {
        
        <Grid container justify="center" medium={6} className={classes.input}>
         <div>
+        <ThemeProvider theme={theme}>
          <TextField
           label="Human's Name"
           value={this.state.humanName}
@@ -110,10 +111,11 @@ render() {
           fullWidth
           onChange={this.handleInputChangeFor('humanName')}
          ></TextField>
+         </ThemeProvider>
          </div>
         
       <ThemeProvider theme={theme}>
-        <Button className={classes.searchNetworkBtn} color="secondary" type="submit" onClick={this.searchNetwork} variant="contained">Search</Button>
+        <Button className={classes.searchNetworkBtn} color="primary" type="submit" onClick={this.searchNetwork} variant="contained">Search</Button>
        </ThemeProvider>
       </Grid>
       </FormControl>

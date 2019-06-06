@@ -60,7 +60,7 @@ class SearchListItems extends Component {
                     )})
                 }
               <Grid container justify="center">
-                <Button onClick={() => this.handleClick(person.id)} variant="contained" className={classes.addFriendBtn} color="primary">Add Friend</Button>
+              <Button onClick={() => this.handleClick(person.id)} color="primary" variant="contained" className={classes.addFriendBtn} >Add Friend</Button>
               </Grid>
                 </div> 
             )})}
