@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, Grid, CardActions, Button, Typography, TextField, MenuItem, FormControl, FormLabel, FormGroup } from '@material-ui/core';
-import { withStyles } from '@material-ui/styles';
+import { withStyles, ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+
+
+const theme = createMuiTheme({
+    palette: {
+        primary: { main: '#388e3c' },
+        secondary: { main: '#81d4fa' }
+    }
+})
+
 
 const styles = {
  root: {
@@ -14,7 +24,8 @@ const styles = {
         width: '100%'
     },
  dogCardGrid: {
-   paddingBottom: '55px'
+   paddingBottom: '55px',
+   marginTop: '30px'
  },
  subHead: {
      marginBottom:'20px'
@@ -33,7 +44,7 @@ const styles = {
      width: '300px'
  },
  addDogBtn: {
-     backgroundColor: 'green',
+     
      height: '45px',
      width: '150px',
      marginLeft: '410px',
@@ -97,6 +108,7 @@ class DogForm extends Component {
       return(
     <>
     <img src="./Images/littledane.JPG" alt="great dane puppy standing on log" className={classes.dogPic} />
+    <ThemeProvider theme={theme}>
     <Grid container justify="center" spacing={2} className={classes.root}>
        <Typography className="welcomeHeader" variant="h2" component="h1">Welcome To Dog Park Well</Typography>
     </Grid> 
@@ -194,12 +206,13 @@ class DogForm extends Component {
         </div>
         {/* end size input dropdown */}
         <CardActions>
-            <Button className={classes.addDogBtn} type="submit" onClick={this.addDog} value="addDog" variant="contained" color="primary" >Add My Dog</Button>
+            <Button className={classes.addDogBtn} type="submit" onClick={this.addDog} value="addDog" variant="contained" color="secondary" >Add My Dog</Button>
         </CardActions>
        </FormGroup>
        </FormControl>
        </Card>
     </Grid>
+    </ThemeProvider>
     </>
       )
   }

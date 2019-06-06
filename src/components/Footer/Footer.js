@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 //import './Footer.css'
 import {Typography, Grid} from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles, ThemeProvider} from '@material-ui/styles';
+import {createMuiTheme} from '@material-ui/core/styles';
 
+
+const theme =createMuiTheme({
+  palette: {
+    primary: {main: '#388e3c'},
+    secondary: { main: '#81d4fa'}
+  }
+})
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -12,17 +20,11 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = {
   root: {
     justify: 'center',
-    width: '105%',
-   // paddingTop: '10px',
-    //paddingBottom: '10px',
-   // display: 'flex',
-   // marginTop: '20px',
-    backgroundColor: 'Green',
+    width: '103%',
+    backgroundColor: '#388e3c',
     overflow: 'hidden'
   }, 
   footer: {
-    backgroundColor: 'Green',
-    //overflow: 'hidden',
     color: 'white',
     alignContents: 'center'
   }
@@ -36,15 +38,13 @@ class Footer extends Component {
         const {classes} = this.props;
 
     return(
-     <Grid container spacing={5} justify="center" className={classes.root}>
-      
-        {/* <div className='footerDiv'> */}
+    <ThemeProvider theme={theme}>
+     <Grid container spacing={5} color="primary" justify="center" className={classes.root}>
         <Grid item >
-        <Typography variant="body2" className={classes.footer}> Go Out. Scoop Poop. Dog Park Well.</Typography>
+        <Typography variant="body2" className={classes.footer}><i> Go Out. Scoop Poop. Dog Park Well. </i> </Typography>
         </Grid>
-        {/* </div> */}
-      
       </Grid>
+      </ThemeProvider>
     )
   }
 

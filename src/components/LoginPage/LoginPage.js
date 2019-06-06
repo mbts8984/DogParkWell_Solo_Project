@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import  {Grid, TextField, Card, Button} from '@material-ui/core';
+import  {Grid, TextField, Card, Button, Typography} from '@material-ui/core';
 //import './LoginPage.css';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles, ThemeProvider} from '@material-ui/styles';
+import {createMuiTheme} from '@material-ui/core/styles';
+
+
+const theme =createMuiTheme({
+  palette: {
+    primary: {main: '#4caf50'},
+    secondary: { main: '#81d4fa'}
+  }
+})
 
 
 const styles = {
@@ -12,11 +21,13 @@ const styles = {
     marginBottom: '20px'
   },
   loginCard: {
-    margin: '50px',
+    //margin: '50px',
     alignContent:'center',
     flexDirection: 'column',
-    height: '500px',
-    width: '600px'
+    height: '550px',
+    width: '600px',
+    marginLeft: '25%',
+    marginTop: '15%'
   },
   imageGridItem: {
     justify: 'left',
@@ -25,15 +36,28 @@ const styles = {
   },
   header: {
     alignContent: 'center',
-    paddingLeft: '30px'
+    paddingLeft: '30px',
+    marginTop: '20px'
   },
   loginForm:{
     backgroundColor:'#eeeeee',
     width: '80%',
-    alignItems: 'center'
+    alignItems: 'center',
+    height: '300px'
+
   },
   inputField:{
-    justify: 'center'
+    marginLeft: '75px',
+    marginTop: '10px',
+    marginBottom: '10px'
+  },
+  subHead: {
+    marginLeft: '43%'
+  },
+  logInBtn: {
+    marginLeft:'43%',
+    marginBottom: '30px',
+    marginTop: '15px'
   }
 }
 
@@ -84,13 +108,14 @@ class LoginPage extends Component {
             {this.props.errors.loginMessage}
           </h2>
         )}
+    <ThemeProvider theme={theme}>
     <Grid>
       <Card className={classes.loginCard}>
        <Grid item className={classes.header}> 
-        <h1>Stop Going To The Dog Park Alone</h1>
+        <Typography variant="h4" >Stop Going To The Dog Park Alone</Typography>
        </Grid>
         <form className={classes.loginForm} onSubmit={this.login}>
-          <h2>Login</h2>
+          <h2 className={classes.subHead} >Login</h2>
          <Grid item className={classes.inputField}>
           <div>
              <TextField
@@ -109,7 +134,7 @@ class LoginPage extends Component {
             <TextField
                 id="outlined-name"
                 label="Password"
-                className="inputField"
+                className={classes.inputField}
                 type="password"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}                
@@ -119,21 +144,22 @@ class LoginPage extends Component {
           </div>
           </Grid>
           <div>
-            <Button variant="contained" color="primary" type="submit" value="Log in" name="submit">Log In</Button>
+            <Button variant="contained" color="primary" type="submit" value="Log in" className={classes.logInBtn}>Log In</Button>
           </div>
         </form>
         
         <center>
           <Button
             variant="contained" color="secondary" size="medium"
-            onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
-          >
-            Register Here
+            onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}>
+           <i> Register Here </i>
           </Button>
         </center>
         </Card>
       </Grid>
+      </ThemeProvider>
       </Grid>
+      
         </>
       
       

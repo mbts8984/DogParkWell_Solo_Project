@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Typography, Grid } from '@material-ui/core';
-import { withStyles } from '@material-ui/styles';
+import { Button, Grid } from '@material-ui/core';
+import {withStyles, ThemeProvider} from '@material-ui/styles';
+import {createMuiTheme} from '@material-ui/core/styles';
+
+
+const theme =createMuiTheme({
+  palette: {
+    primary: {main: '#4caf50'},
+    secondary: { main: '#81d4fa'}
+  }
+})
 
 const styles = {
   root: {
@@ -9,6 +18,11 @@ const styles = {
   },
   listStuff: {
       marginLeft:'30px'
+  },
+  addFriendBtn: {
+    width: '150px',
+    height: '50px',
+    marginTop: '15px'
   }
 }
 class SearchListItems extends Component {
@@ -33,6 +47,7 @@ class SearchListItems extends Component {
     return(
       <>
       <Grid container justify="center">
+        <ThemeProvider theme={theme}>
         <div className={classes.root}>
             {this.props.searchReducer.map(person => {
                return(
@@ -44,11 +59,13 @@ class SearchListItems extends Component {
                      <p key={dog.dogName}><b>{dog.dogName}</b> -<i> A {dog.dogColor} {dog.dogBreed}</i></p>
                     )})
                 }
-
-                <Button onClick={() => this.handleClick(person.id)} variant="contained" color="primary">Add Friend</Button>
+              <Grid container justify="center">
+              <Button onClick={() => this.handleClick(person.id)} color="primary" variant="contained" className={classes.addFriendBtn} >Add Friend</Button>
+              </Grid>
                 </div> 
             )})}
         </div>
+        </ThemeProvider>
        </Grid>
       </>
     

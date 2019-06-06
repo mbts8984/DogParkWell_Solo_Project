@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Grid, Card, FormControl, CardActions, Button, Typography, TextField, MenuItem, FormLabel} from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles, ThemeProvider} from '@material-ui/styles';
+import {createMuiTheme} from '@material-ui/core/styles';
 
 import './RegisterPage.css';
+
+const theme =createMuiTheme({
+  palette: {
+    primary: {main: '#4caf50'},
+    secondary: { main: '#81d4fa'}
+  }
+});
 
 const styles = {
   root: {
@@ -11,22 +19,22 @@ const styles = {
     justify: 'center',
     padding: '30px',
   },
-  headDiv: {
-      //backgroundColor: '#282c34',
+  headDiv: {  
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       justify: 'center',
       alignContent: 'center',
       fontSize: `calc(10px + 2vmin)`,
-      //color: 'white'
   },
   regFormItem: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    justify: 'center',
-    alignContent: 'center',
-
+    flexDirection: 'column'
+  },
+  registerBtn: {
+    marginTop: '20px'
+  },
+  loginBtn: {
+    margin: '20px'
   }
    
 };
@@ -99,7 +107,8 @@ class RegisterPage extends Component {
     //console.log('HERE IS THE DOG PARK DATA YOU REQUESTED', this.props.reduxState)
     return (
       <>
-    <Grid container justify="center" className={classes.root} spacing={3}>
+    <ThemeProvider theme={theme}>
+     <Grid container justify="center" className={classes.root} spacing={3}>
       <Grid item className={classes.headDiv} >
        <Typography className="welcomeHeader" variant="h2" component="h1">Welcome To Dog Park Well</Typography>
        <Typography className="welcomeHeader" variant="h6" component="h1">Create Your Account To Start Meeting Up With Fellow Dog Lovers & Pooches!</Typography>
@@ -243,33 +252,37 @@ class RegisterPage extends Component {
           </select> */}
           </Grid>
           {/* end Home Dog Park Drop Down */}
-          <Grid item spacing={3} className={classes.regFormItem}>
+          {/* <Grid item spacing={3} className={classes.regFormItem}>
             <input
               className="register"
               type="submit"
               name="submit"
               value="Register"
             />
-          </Grid>
-        <Grid  item spacing={3} className={classes.regFormItem}>
+          </Grid> */}
+        <Grid  container justify="center" spacing={3} className={classes.regFormItem}>
         <CardActions>
-          <Button className="register" type="submit" name="submit" value="register" variant="outlined" color="primary"  onClick={this.registerUser}>Submit Human Info & Add My Dog</Button>
+          <Button className={classes.registerBtn} type="submit" name="submit" value="register" variant="contained" color="secondary"  onClick={this.registerUser}>Submit Human Info & Add My Dog</Button>
         </CardActions>
         </Grid>
         </FormControl>
         </Card>
         {/* </Grid> */}
         <center>
-          <button
+          <ThemeProvider theme={theme}>
+          <Button
             type="button"
-            className="link-button"
+            
+            className={classes.loginBtn}
             onClick={() => {this.props.dispatch({type: 'SET_TO_LOGIN_MODE'})}}
           >
-            Login
-          </button>
+            Back To Login
+          </Button>
+          </ThemeProvider>
         </center>
       </div>
       </Grid>
+      </ThemeProvider>
       </>
     );
   }
