@@ -72,7 +72,8 @@ state = {
     date: '',
     time: '',
     dogPark: '',
-    network: ''
+    network: '',
+    dogParkName: ''
     // message: {
     //   to: +17157817724,
     //   body: 'pup messages comin your way'
@@ -118,7 +119,8 @@ handleClick = (event) => {
       notes: this.state.notes,
       id: this.props.user.id,
       phone: parseInt(this.props.user.phone),
-      human_name: this.props.user.human_name
+      human_name: this.props.user.human_name,
+      dogParkName: this.state.dogParkName
     }})
     // this.handleAlert(this.state);
     alert('Your Network Has Been Alerted! Get Ready To DogParkWell!') 
@@ -156,12 +158,21 @@ handleClick = (event) => {
   //   });
   // }
 
+  handlePark = (event) => {
+    console.log('in handlePark');
+    this.setState({
+      ...this.setState,
+      dogPark: event.target.value.id,
+      dogParkName: event.target.value.dog_park
+    })
+  }
+
 render(){
   const {classes} = this.props;
     // console.log('date state: ', this.state.date);
     // console.log('time state: ', this.state.time);
     // console.log('notes state: ', this.state.notes);
-    // console.log('dog park state: ', this.state.dogPark);
+   console.log('dog park state: ', this.state.dogPark, this.state.dogParkName);
   return(
     <>
     <Grid className={classes.root}>
@@ -212,11 +223,11 @@ render(){
             className={classes.playdateInputPark}
             variant="outlined"
             margin="normal"
-            onChange={this.handleInputChangeFor('dogPark')}
+            onChange={this.handlePark}
             helperText="Select the dog park that you're going to"
             >
               {this.props.dogPark.map(option => (
-          <MenuItem key={option.id} value={option.id}>
+          <MenuItem key={option.id} value={option} >
             {option.dog_park}
           </MenuItem>))} 
           </TextField>
