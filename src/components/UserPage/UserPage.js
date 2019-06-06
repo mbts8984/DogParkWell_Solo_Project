@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
+//import LogOutButton from '../LogOutButton/LogOutButton';
 import './UserPage.css';
-import { Button, List, Card, ListItem, ListItemText, Typography, Grid, ListItemSecondaryAction} from '@material-ui/core';
+import {  List, Card, ListItem, ListItemText, Typography, Grid, ListItemSecondaryAction} from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
-import {withStyles, ThemeProvider} from '@material-ui/styles';
-import {createMuiTheme} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/styles';
+//import {createMuiTheme} from '@material-ui/core/styles';
 import moment from 'moment';
 
-const theme =createMuiTheme({
-  palette: {
-    primary: {main: '#4caf50'},
-    secondary: { main: '#81d4fa'}
-  }
-})
+// const theme =createMuiTheme({
+//   palette: {
+//     primary: {main: '#4caf50'},
+//     secondary: { main: '#81d4fa'}
+//   }
+// })
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (

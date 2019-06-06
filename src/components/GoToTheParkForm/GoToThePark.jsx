@@ -65,12 +65,21 @@ const styles = {
 }
 
 class GoToTheParkForm extends Component {
+  
 
 state = {
     notes: '',
     date: '',
     time: '',
-    dogPark: ''
+    dogPark: '',
+    network: ''
+    // message: {
+    //   to: +17157817724,
+    //   body: 'pup messages comin your way'
+    // },
+    // submitting: false,
+    // error: false
+    
 }
 
 //call in the list of DPs from the DB
@@ -102,21 +111,55 @@ handleClick = (event) => {
        id: this.props.user.id 
     }
     });
-    alert('Your Network Has Been Alerted! Get Ready To DogParkWell!')
-
-    //this.props.history.push('/');
-    
+    this.props.dispatch({ type: 'SEND_ALERT', payload: {
+      date: this.state.date,
+      time: this.state.time,
+      dog_park_id: this.state.dogPark,
+      notes: this.state.notes,
+      id: this.props.user.id 
+    }})
+    // this.handleAlert(this.state);
+    alert('Your Network Has Been Alerted! Get Ready To DogParkWell!') 
 }
+  // handleAlert(eventDeets){
+  //   console.log('in handle Alert');
+  //   this.setState({
+  //     ...this.state,
+  //     submitting: true
+  //   });
+  //   fetch('/api/sendMessage', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //    body: JSON.stringify(this.state.message) 
+  //   })
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     if (data.success) {
+  //       this.setState({
+  //         error: false,
+  //         submitting: false,
+  //         message: {
+  //           to: '',
+  //           body: ''
+  //         }
+  //       });
+  //     } else {
+  //       this.setState({
+  //         error: true, 
+  //         submitting: false
+  //       });
+  //     }
+  //   });
+  // }
 
 render(){
   const {classes} = this.props;
-
-    console.log('date state: ', this.state.date);
-    console.log('time state: ', this.state.time);
-    console.log('notes state: ', this.state.notes);
-    console.log('dog park state: ', this.state.dogPark);
-    
-    
+    // console.log('date state: ', this.state.date);
+    // console.log('time state: ', this.state.time);
+    // console.log('notes state: ', this.state.notes);
+    // console.log('dog park state: ', this.state.dogPark);
   return(
     <>
     <Grid className={classes.root}>
@@ -206,6 +249,7 @@ const mapStateToProps = (reduxState) => {
         reduxState,
         user: reduxState.user,
         dogPark: reduxState.dogParkReducer,
+        network: reduxState.setNetworkReducer
 
     }
 }
