@@ -1,5 +1,5 @@
 const express = require('express');
-const pool = require('../modules/pool.js');
+//const pool = require('../modules/pool.js');
 const router = express.Router();
 const client = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
 const {rejectUnauthenticated} = require('../modules/authentication-middleware.js');
@@ -20,7 +20,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     client.messages.create({
       from: process.env.SENDER,
       to: `+1${req.body.phone}`,
-      body: `${req.body.human_name} is going to ${req.body.dog_park_id} on ${req.body.date} at ${req.body.time}. Notes on this playdate: ${req.body.notes}`
+      body: `Your DogParkWell Friend ${req.body.human_name} is going to ${req.body.dogParkName} on ${req.body.date} at ${req.body.time}. Notes on this playdate: ${req.body.notes}`
     })
     .then(() => {
       console.log('sucessfully sent text via twilio post');
@@ -33,22 +33,6 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 })
 
 
-// router.post('/text', rejectUnauthenticated, (req, res) => {
-//   console.log("req.body in text message:", req.body);
-//   client.messages.create({
-//       body: craftMessage(req.body.alert),
-//       from: process.env.TWILLIO_NUMBER,
-//       to: `+1${req.body.user.phone_number}`
-//     })
-//     .then(message => {
-//       console.log(message.sid);
-//       res.sendStatus(200);
-//     })
-//     .catch(error => {
-//       console.log('error in sending text alert:', error);
-//       res.sendStatus(500);
-//     });
-// })
 
 
 module.exports = router;
