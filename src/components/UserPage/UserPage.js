@@ -6,7 +6,7 @@ import { Button, List, Card, ListItem, ListItemText, Typography, Grid, ListItemS
 import DeleteIcon from '@material-ui/icons/Delete';
 import {withStyles, ThemeProvider} from '@material-ui/styles';
 import {createMuiTheme} from '@material-ui/core/styles';
-
+import moment from 'moment';
 
 const theme =createMuiTheme({
   palette: {
@@ -99,7 +99,8 @@ render() {
       <List>
         {this.props.event.map(event => (
           <ListItem key={event.id}>
-            <ListItemText secondary={event.notes}><b>Where:</b> {event.dog_park} <b>When: </b>{event.date}
+            {/* {console.log('HERE IS THE DATE: ', moment(event.date).format("MMM Do YY"))} */}
+            <ListItemText secondary={event.notes}><b>Where:</b> {event.dog_park} <b>When: </b>{moment(event.date).format("MMM Do YYYY")}
             </ListItemText>
             <ListItemSecondaryAction edge="end" aria-label="Delete">
             <DeleteIcon onClick={() => this.handleEventDelete(event.id)} value={event.id}/>
