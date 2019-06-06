@@ -73,13 +73,8 @@ state = {
     time: '',
     dogPark: '',
     network: '',
-    dogParkName: ''
-    // message: {
-    //   to: +17157817724,
-    //   body: 'pup messages comin your way'
-    // },
-    // submitting: false,
-    // error: false
+    dogParkName: '',
+    numbers: ''
     
 }
 
@@ -87,7 +82,20 @@ state = {
 componentDidMount(){
     this.props.dispatch({ type: 'FETCH_PARKS'})
     this.props.dispatch({ type: 'FETCH_NETWORK'})
+   // this.networkNumbers()
   }
+
+// networkNumbers(){
+//   console.log('in networkNumbers with phones: ', [this.props.network.phone] );
+//   this.setState({
+//     numbers: {this.props.network.map(option => 
+//       numbers: [option.phone]
+//       )}
+//   })
+//   {this.props.network.map(option => (
+        
+          
+// }
 
 //update the state for each property on change
 handleInputChangeFor = propertyName => (event) => {

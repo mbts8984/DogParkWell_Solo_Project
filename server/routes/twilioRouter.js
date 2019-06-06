@@ -1,8 +1,9 @@
 const express = require('express');
-//const pool = require('../modules/pool.js');
+const pool = require('../modules/pool.js');
 const router = express.Router();
 const client = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
 const {rejectUnauthenticated} = require('../modules/authentication-middleware.js');
+//import axios from 'axios';
 
 // makeNum(req.body.user.phone  => {
 //  let newPhone = '';
@@ -10,7 +11,24 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware.js
 //  console.log('newPhone here. should be a number.')
 // )}
 
-
+router.get('/', (req, res) => {
+  console.log('in get phoneNumbers GET');
+  
+  let query = `SELECT "user".phone FROM 
+              (SELECT personone as friend_id FROM network WHERE persontwo = $1
+              UNION 
+              SELECT persontwo FROM network WHERE personone = $1) friend_id
+              LEFT JOIN "user" ON friend_id.friend_id = "user".id
+              ORDER BY "user".id;`;
+    pool.query(query, [req.user.id])
+      .then((results) => {
+        console.log('back from phoneNumbers GET with results: ', results.rows);
+        res.send(results.rows);
+      }).catch((error) => {
+        console.log('error in phoneNumbers GET: ', error)
+        res.sendStatus(500)
+      })
+})
 
 
 //Twilio config

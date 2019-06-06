@@ -7,7 +7,7 @@ function* sendAlertSaga(action) {
  
 try {
       //POST alert to network with event details to network table
-    yield axios.post('/api/sendMessage', action.payload);
+    yield axios.get('/api/sendMessage', action.payload);
     
   } catch (error) {
     console.log('error in sendAlertSaga with code: ', error);
