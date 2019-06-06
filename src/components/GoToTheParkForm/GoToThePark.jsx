@@ -116,7 +116,9 @@ handleClick = (event) => {
       time: this.state.time,
       dog_park_id: this.state.dogPark,
       notes: this.state.notes,
-      id: this.props.user.id 
+      id: this.props.user.id,
+      phone: parseInt(this.props.user.phone),
+      human_name: this.props.user.human_name
     }})
     // this.handleAlert(this.state);
     alert('Your Network Has Been Alerted! Get Ready To DogParkWell!') 
@@ -237,12 +239,7 @@ render(){
 
         
     )
-}
-
-}
-
-
-
+}}
 
 const mapStateToProps = (reduxState) => {
     return {
