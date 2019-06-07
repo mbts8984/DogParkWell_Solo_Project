@@ -9,6 +9,7 @@ import setNetworkReducer from './setNetworkReducer.js';
 import setDogsReducer from './setDogsReducer.js';
 import setHomeParkReducer from './setHomeParkReducer.js';
 import setSearchReducer from './setSearchReducer.js';
+import setPhoneNumbers from './setPhoneNumbers.js';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -26,7 +27,8 @@ const rootReducer = combineReducers({
   //setUserReducer //stores all current users data
   setDogsReducer,
   setHomeParkReducer,
-  setSearchReducer
+  setSearchReducer,
+  setPhoneNumbers
 });
 
 export default rootReducer;
