@@ -82,7 +82,7 @@ state = {
 componentDidMount(){
     this.props.dispatch({ type: 'FETCH_PARKS'})
     this.props.dispatch({ type: 'FETCH_NETWORK'})
-   // this.networkNumbers()
+    this.props.dispatch({ type: 'FETCH_NUMBERS'})
   }
 
 // networkNumbers(){
@@ -126,9 +126,10 @@ handleClick = (event) => {
       dog_park_id: this.state.dogPark,
       notes: this.state.notes,
       id: this.props.user.id,
-      phone: parseInt(this.props.user.phone),
+      //phone: parseInt(this.props.user.phone),
       human_name: this.props.user.human_name,
-      dogParkName: this.state.dogParkName
+      dogParkName: this.state.dogParkName,
+      numbers: this.props.phoneNumbers
     }})
     // this.handleAlert(this.state);
     alert('Your Network Has Been Alerted! Get Ready To DogParkWell!') 
@@ -180,7 +181,8 @@ render(){
     // console.log('date state: ', this.state.date);
     // console.log('time state: ', this.state.time);
     // console.log('notes state: ', this.state.notes);
-   console.log('dog park state: ', this.state.dogPark, this.state.dogParkName);
+    console.log('phone numbers in state: ', this.props.phoneNumbers)
+    console.log('dog park state: ', this.state.dogPark, this.state.dogParkName);
   return(
     <>
     <Grid className={classes.root}>
@@ -265,7 +267,8 @@ const mapStateToProps = (reduxState) => {
         reduxState,
         user: reduxState.user,
         dogPark: reduxState.dogParkReducer,
-        network: reduxState.setNetworkReducer
+        network: reduxState.setNetworkReducer,
+        phoneNumbers: reduxState.setPhoneNumbers
 
     }
 }

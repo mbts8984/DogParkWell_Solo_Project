@@ -15,6 +15,7 @@ import deleteEvent from './deleteEventSaga.js';
 import searchingSaga from './searchNetworkSaga'
 import makeFriends from './addFriendSaga.js';
 import alertNetworkSaga from './sendAlertSaga.js';
+import phoneNumbersSaga from './fetchNumbers.js';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -40,6 +41,7 @@ export default function* rootSaga() {
     deleteEvent(),
     searchingSaga(),
     makeFriends(),
-    alertNetworkSaga()
+    alertNetworkSaga(),
+    phoneNumbersSaga()
   ]);
 }
