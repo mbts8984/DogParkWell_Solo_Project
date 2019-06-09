@@ -26,16 +26,17 @@ const styles = {
   },
   title: {
     display: 'inline-flex',
-    marginTop: '15px'
+    marginTop: '35px',
+    fontSize: '55px'
   },
-    subtitle:{
-        marginTop: '10px',
-        marginBottom: '20px'
-    },
+  subtitle:{
+      marginTop: '23px',
+      marginBottom: '20px',
+      fontSize: '25px'
+  },
   divSpacer: {
     backgroundColor: '#A9A9A9',
     width: '100%',
-    
     height: '1px'
   }
 }
@@ -51,11 +52,11 @@ return (
    <Grid container theme={theme} className={classes.root}>
    <div>
         <img src="./Images/tailBiting.JPG" alt="great dane puppy standing on log" className={classes.headerPic} />
-         <Grid container justify="center" className={classes.title}>
-          <Typography variant="h3">My DogParkWell Network</Typography>
+         <Grid container justify="center" >
+          <Typography className={classes.title} variant="h1">My DogParkWell Network</Typography>
         </Grid>
-        <Grid container justify="center" className={classes.subtitle}>
-          <Typography variant="h6">Find & Add Some Contacts!</Typography>
+        <Grid container justify="center" >
+          <Typography className={classes.subtitle} variant="h6">Find & Add Some Contacts!</Typography>
         </Grid>
     
     <SearchNetwork/>

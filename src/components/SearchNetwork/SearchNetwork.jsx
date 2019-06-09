@@ -18,8 +18,8 @@ const styles = {
      margin: '25px',
      paddingBottom: '10px',
      width: '1200px',
-     alignItems: 'center'
-
+     alignItems: 'center',
+     height: '200px'
     },
     searchGrid: {
      justify: 'center',
@@ -31,7 +31,8 @@ const styles = {
      alignItems: 'center',
      display: 'inline-block',
      justify: 'center',
-     marginLeft: '350px'
+     marginLeft: '350px',
+     marginTop: '20px'
     },
     searchNetworkBtn: {
      width: '150px',
@@ -48,7 +49,7 @@ const styles = {
     },
     head: {
      marginLeft: '480px',
-     marginTop:'20px',
+     marginTop:'25px',
      marginBottom: '15px',
      textDecoration: 'underline'  
     },
