@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
+//import LogOutButton from '../LogOutButton/LogOutButton';
 import './UserPage.css';
-import { Button, List, Card, ListItem, ListItemText, Typography, Grid, ListItemSecondaryAction} from '@material-ui/core';
+import { List, Card, ListItem, ListItemText, Typography, Grid, ListItemSecondaryAction} from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
-import {withStyles, ThemeProvider} from '@material-ui/styles';
+import {withStyles} from '@material-ui/styles';
 import {createMuiTheme} from '@material-ui/core/styles';
 import moment from 'moment';
 
-const theme =createMuiTheme({
-  palette: {
-    primary: {main: '#4caf50'},
-    secondary: { main: '#81d4fa'}
-  }
-})
+// const theme =createMuiTheme({
+//   palette: {
+//     primary: {main: '#4caf50'},
+//     secondary: { main: '#81d4fa'}
+//   }
+// })
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
@@ -21,21 +21,37 @@ const theme =createMuiTheme({
 
 const styles = {
   parkHistory: {
-    margin: '30px',
+    marginLeft: '30px',
+    backgroundColor:'#e4f3fa',
+    marginRight: '30px'
 
   },
   network: {
     margin: '30px'
   },
+   headerName: {
+     //paddingLeft: '30px',
+     marginTop: '25px',
+   },
   anniePic:{
     objectFit: 'cover',
-    height: '300px',
+    height: '500px',
     width: '100%',
-    objectPosition:'10% 50%'
+    objectPosition:'10% 50%',
+    //opacity: '0.9'
   },
-  headerName: {
-    paddingLeft: '30px',
-    marginTop: '25px'
+  blueDiv: {
+    backgroundColor: '#e4f3fa',
+   marginBottom: '100px',
+   paddingTop: '30px'
+  },
+  parkHisHead: {
+    marginTop: '20px',
+    textDecoration: 'underline'
+  },
+  networkHead: {
+    textDecoration: 'underLine',
+    marginTop: '15px'
   }
 }
 
@@ -64,13 +80,16 @@ render() {
   <div>
     <img src="./Images/anniesmall.JPG" alt="great dane puppy standing on log" className={classes.anniePic}/>
     
-    <Typography variant="h4" className={classes.headerName}>
+    <Grid container justify="center">
+    <Typography variant="h3" className={classes.headerName}>
       Welcome, { this.props.user.username }!
     </Typography>
-    
+    </Grid>
     {/* listing of user's dog park network. Including people and dog names */}
     <Card className={classes.network}>
-      <Typography variant="h5">Dog Park Friends</Typography>
+      <Grid className={classes.networkHead} container justify="center" textDecoration="underLined">
+      <Typography variant="h4">Dog Park Friends</Typography>
+      </Grid>
      <br/>
      <Grid>
        <div className="networkListDiv">
@@ -91,9 +110,19 @@ render() {
      </Grid>
     </Card>
     
-    <Card className={classes.parkHistory}>
-      <Typography variant="h5">My Park History</Typography>
+
+  <div>
+    <Grid container justify="center">
+      <Typography className={classes.parkHisHead} variant="h4">My Park History</Typography>
+      </Grid>
       <br/>
+  </div>
+   <div className={classes.blueDiv}>
+    <div className={classes.parkHistory}>
+      {/* <Grid container justify="center">
+      <Typography className={classes.parkHisHead} variant="h4">My Park History</Typography>
+      </Grid>
+      <br/> */}
     <Grid> 
     <div className="eventListDiv">
       <List>
@@ -110,8 +139,10 @@ render() {
       </List>
      </div>
     </Grid>
-    </Card>
-    <div></div>
+    <div className="bottomAngle"></div>
+    </div>
+    </div> 
+    
     {/* <p>Your ID is: {props.user.id}</p> */}
     {/* <LogOutButton className="log-in" /> */}
   </div>

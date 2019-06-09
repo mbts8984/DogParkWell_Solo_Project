@@ -2,3 +2,24 @@
    object-fit: cover; 
    height: 250px;
 }
+
+/* .breakLine {
+ width: 50%;
+ margin: auto;
+ margin-top: 5%;
+ margin-bottom: 5%;
+ transform: rotate(4deg);
+ border-color: purple;
+} */
+
+.bottomAngle {
+  margin-top: 20px;
+  width: 111%;
+  height: 35px;
+  background: #e4f3fa;
+  /* left: -20%; */
+  bottom: 100px;
+  transform: rotate(3deg);
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+}

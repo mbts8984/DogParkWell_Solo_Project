@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, Button, Typography, TextField, FormControl, ListItem, List, ListItemText, FormLabel, Grid } from '@material-ui/core';
+import { Card, Button, Typography, TextField, FormControl, ListItem, ListItemText, Grid } from '@material-ui/core';
 import SearchListItems from '../SearchLIs/SearchListItems.jsx';
 import {withStyles, ThemeProvider} from '@material-ui/styles';
 import {createMuiTheme} from '@material-ui/core/styles';
