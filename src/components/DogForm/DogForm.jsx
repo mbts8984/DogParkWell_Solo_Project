@@ -17,12 +17,19 @@ const styles = {
  root: {
    margin: '15px'
  },
-    dogPic: {
-        justify: 'center',
-        objectFit: 'cover',
-        height: '300px',
-        width: '100%'
-    },
+welcomeHeader:{
+    marginTop: '30px'
+ },
+subHeader: {
+   marginTop: '15px'
+},
+
+dogPic: {
+    justify: 'center',
+    objectFit: 'cover',
+    height: '500px',
+    width: '100%'
+},
  dogCardGrid: {
    paddingBottom: '55px',
    marginTop: '30px'
@@ -36,7 +43,7 @@ const styles = {
  formLabel: {
      fontSize: '24px',
      marginTop: '20px',
-     marginLeft: '350px',
+     marginLeft: '375px',
      marginBottom: '20px'
  },
  inputField: {
@@ -114,15 +121,15 @@ class DogForm extends Component {
     <img src="./Images/littledane.JPG" alt="great dane puppy standing on log" className={classes.dogPic} />
     <ThemeProvider theme={theme}>
     <Grid container justify="center" spacing={2} className={classes.root}>
-       <Typography className="welcomeHeader" variant="h2" component="h1">Welcome To Dog Park Well</Typography>
+       <Typography className={classes.welcomeHeader} variant="h2" component="h1">Welcome To Dog Park Well</Typography>
     </Grid> 
     <Grid container justify="center" className={classes.subHead}>
-       <Typography className="welcomeHeader" variant="h6" component="h1">Add Your Dog & Start Meeting More 4-Legged Friends</Typography>
+       <Typography className={classes.subHeader} variant="h6" component="h1"><i>Add Your Dog & Start Meeting More 4-Legged Friends</i></Typography>
     </Grid>
     <Grid container justify="center" spacing={2} className={classes.dogCardGrid}>  
        <Card className={classes.dogCard}>
        <FormControl>
-        <FormLabel className={classes.formLabel}> Add Your Dog's Information</FormLabel>
+        <FormLabel className={classes.formLabel}> Your Dog's Information</FormLabel>
         <FormGroup>
         {/* dog name input field */}
         <div>

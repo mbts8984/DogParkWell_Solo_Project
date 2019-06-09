@@ -40,7 +40,7 @@ const styles = {
     marginTop: '20px'
   },
   loginForm:{
-    backgroundColor:'#eeeeee',
+    backgroundColor: '#aadaac',
     width: '80%',
     alignItems: 'center',
     height: '300px'

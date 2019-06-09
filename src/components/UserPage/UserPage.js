@@ -24,17 +24,19 @@ import moment from 'moment';
 
 const styles = {
   parkHistory: {
-    marginLeft: '30px',
-    backgroundColor:'#e4f3fa',
-    marginRight: '30px'
+    marginLeft: '50px',
+    backgroundColor: '#aadaac',
+    marginRight: '50px'
 
   },
   network: {
-    margin: '30px'
+    margin: '30px',
   },
    headerName: {
      //paddingLeft: '30px',
-     marginTop: '25px',
+     marginTop: '65px',
+     marginBottom: '65px',
+     fontSize: '55px'
    },
   anniePic:{
     objectFit: 'cover',
@@ -44,17 +46,31 @@ const styles = {
     //opacity: '0.9'
   },
   blueDiv: {
-    backgroundColor: '#e4f3fa',
+   backgroundColor: '#aadaac',
    marginBottom: '100px',
    paddingTop: '30px'
   },
+  greenDiv: {
+    backgroundColor: '#aadaac',
+    paddingTop: '5px'
+  },
   parkHisHead: {
-    marginTop: '20px',
-    textDecoration: 'underline'
+    marginTop: '30px',
+    textDecoration: 'underline',
+    marginBottom: '40px'
   },
   networkHead: {
-    textDecoration: 'underLine',
-    marginTop: '15px'
+    textType: 'Arial',
+    marginTop: '40px',
+    marginBottom: '10px'
+  },
+  breakUpDiv: {
+    height: '4px',
+    width: '75%',
+    backgroundColor: '#4caf50'
+  },
+  friendName: {
+    marginLeft: '38%'
   }
 }
 
@@ -84,12 +100,25 @@ render() {
     <img src="./Images/anniesmall.JPG" alt="great dane puppy standing on log" className={classes.anniePic}/>
     
     <Grid container justify="center">
-    <Typography variant="h3" className={classes.headerName}>
-      Welcome, { this.props.user.username }!
+    <Typography variant="h1" className={classes.headerName}>
+     <i> Welcome, { this.props.user.username }!</i>
     </Typography>
     </Grid>
+    <Grid container justify="center">
+    <div className={classes.breakUpDiv}></div>
+    </Grid>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+
+    
     {/* listing of user's dog park network. Including people and dog names */}
-    <Card className={classes.network}>
+    <div className="topAngle"></div>
+    <div className={classes.greenDiv}>
+    <div className={classes.network}>
       <Grid className={classes.networkHead} container justify="center" textDecoration="underLined">
       <Typography variant="h4">Dog Park Friends</Typography>
       </Grid>
@@ -97,21 +126,19 @@ render() {
      <Grid>
        <div className="networkListDiv">
       <List>
-       {this.props.network.map(friend => (
-         <ListItem key={friend.friend_id}>
+       {this.props.network.map(friend => (    
+         <ListItem key={friend.friend_id} className={classes.friendName}>
           <ListItemText secondary={friend.dog_park}><b>{friend.human_name} & {friend.dog_name}</b> - A {friend.color} {friend.breed}</ListItemText>
          </ListItem>
        ))}
-        <ListItem>
+        {/* <ListItem>
           <ListItemText secondary="Add Some Friends & Watch Your Network Grow">Humans & Dogs</ListItemText>
-        </ListItem>
+        </ListItem> */}
       </List>
      </div>
-     {/* <ThemeProvider theme={theme}>
-     <Button variant="contained" color="primary">COLOR SHIT</Button>
-     </ThemeProvider> */}
      </Grid>
-    </Card>
+    </div>
+    </div>
     
 
   <div>

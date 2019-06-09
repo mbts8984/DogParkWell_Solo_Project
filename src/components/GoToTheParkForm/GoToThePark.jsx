@@ -20,7 +20,7 @@ const styles = {
   dogPic: {
     justify: 'center',
     objectFit: 'cover',
-    height: '300px',
+    height: '500px',
     width: '100%'
   },
   heading: {
@@ -33,11 +33,11 @@ const styles = {
   },
   form: {
     width: '700px',
-    height: '475px'
+    height: '550px'
   },
   formLabelText: {
     fontSize: '24px',
-    marginTop:'15px',
+    marginTop:'25px',
     marginBottom: '15px',
     marginLeft: '170px'
   },
@@ -48,9 +48,9 @@ const styles = {
     marginTop: '20px'
   },
   playdateInput: {
-    marginTop: '15px',
+    marginTop: '20px',
     marginLeft: '150px',
-    marginBottom: '10px',
+    marginBottom: '20px',
   },
   playdateInputPark:{
     marginTop: '15px',
@@ -59,8 +59,11 @@ const styles = {
   },
   eventButton: {
     marginLeft: '150px',
-    marginTop: '25px',
+    marginTop: '35px',
     marginBottom: '15px',
+  },
+  head: {
+    margin: '30px'
   }
 }
 
@@ -134,38 +137,7 @@ handleClick = (event) => {
     // this.handleAlert(this.state);
     alert('Your Network Has Been Alerted! Get Ready To DogParkWell!') 
 }
-  // handleAlert(eventDeets){
-  //   console.log('in handle Alert');
-  //   this.setState({
-  //     ...this.state,
-  //     submitting: true
-  //   });
-  //   fetch('/api/sendMessage', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //    body: JSON.stringify(this.state.message) 
-  //   })
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     if (data.success) {
-  //       this.setState({
-  //         error: false,
-  //         submitting: false,
-  //         message: {
-  //           to: '',
-  //           body: ''
-  //         }
-  //       });
-  //     } else {
-  //       this.setState({
-  //         error: true, 
-  //         submitting: false
-  //       });
-  //     }
-  //   });
-  // }
+  
 
   handlePark = (event) => {
     console.log('in handlePark');
@@ -186,10 +158,10 @@ render(){
   return(
     <>
     <Grid className={classes.root}>
-     <img src="./Images/tanna.JPG" alt="German Shepherd at park" className={classes.dogPic} />
+     <img src="./Images/bogartFace.JPG" alt="German Shepherd at park" className={classes.dogPic} />
      <Grid container justify="center" className={classes.heading}>
-          <Typography variant="h2">Ready To Go To The Park?</Typography>
-          <Typography className={classes.subHead} variant="h6">Let Your DogParkWell Network Know When You're Going & Watch As Your Pups Get Tired Faster!</Typography>
+          <Typography className={classes.head} variant="h2">Ready To Go To The Park?</Typography>
+          <Typography className={classes.subHead} variant="h6"><i>Let Your DogParkWell Network Know When You're Going & Get Your Pups Get Tired Faster!</i></Typography>
             <div className={classes.breakUpDiv}></div>
     </Grid>
     <Grid container justify="center">
@@ -243,13 +215,14 @@ render(){
           </TextField>
        </div>
        
-       
+    <Grid container justify="center">
       <Button
          variant="contained"
          color="secondary"
          onClick={this.handleClick}
          className={classes.eventButton}
         >Add Your Event & Notify Your Network</Button>
+        </Grid>
       </FormControl>
      </div>
     </Card>
