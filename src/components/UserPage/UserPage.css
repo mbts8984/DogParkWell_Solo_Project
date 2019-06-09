@@ -16,7 +16,19 @@
   margin-top: 20px;
   width: 111%;
   height: 35px;
-  background: #e4f3fa;
+  background: #aadaac;
+  /* left: -20%; */
+  bottom: 100px;
+  transform: rotate(3deg);
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+}
+
+.topAngle {
+  margin-bottom: -50px;
+  width: 111%;
+  height: 35px;
+  background: #aadaac;
   /* left: -20%; */
   bottom: 100px;
   transform: rotate(3deg);

@@ -21,7 +21,7 @@ const styles = {
   headerPic:{
     justify: 'center',
     objectFit: 'cover',
-    height: '300px',
+    height: '500px',
     width: '100%'
   },
   title: {
