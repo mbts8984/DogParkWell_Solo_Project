@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
-import {Typography, Grid} from '@material-ui/core';
-import {withStyles, ThemeProvider} from '@material-ui/styles';
-import {createMuiTheme} from '@material-ui/core/styles';
+import {Typography} from '@material-ui/core';
+import {withStyles} from '@material-ui/styles';
+//import {createMuiTheme} from '@material-ui/core/styles';
 
 const styles = {
   root: {
@@ -39,12 +39,12 @@ const styles = {
   }
 }
 
-const theme =createMuiTheme({
-  palette: {
-    primary: {main: '#4caf50'},
-    secondary: { main: '#81d4fa'}
-  }
-})
+// const theme =createMuiTheme({
+//   palette: {
+//     primary: {main: '#4caf50'},
+//     secondary: { main: '#81d4fa'}
+//   }
+// })
 
 class Nav extends Component {
   render(){

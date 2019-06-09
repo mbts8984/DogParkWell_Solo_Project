@@ -65,19 +65,37 @@ const styles = {
 }
 
 class GoToTheParkForm extends Component {
+  
 
 state = {
     notes: '',
     date: '',
     time: '',
-    dogPark: ''
+    dogPark: '',
+    network: '',
+    dogParkName: '',
+    numbers: ''
+    
 }
 
 //call in the list of DPs from the DB
 componentDidMount(){
     this.props.dispatch({ type: 'FETCH_PARKS'})
     this.props.dispatch({ type: 'FETCH_NETWORK'})
+    this.props.dispatch({ type: 'FETCH_NUMBERS'})
   }
+
+// networkNumbers(){
+//   console.log('in networkNumbers with phones: ', [this.props.network.phone] );
+//   this.setState({
+//     numbers: {this.props.network.map(option => 
+//       numbers: [option.phone]
+//       )}
+//   })
+//   {this.props.network.map(option => (
+        
+          
+// }
 
 //update the state for each property on change
 handleInputChangeFor = propertyName => (event) => {
@@ -102,21 +120,69 @@ handleClick = (event) => {
        id: this.props.user.id 
     }
     });
-    alert('Your Network Has Been Alerted! Get Ready To DogParkWell!')
-
-    //this.props.history.push('/');
-    
+    this.props.dispatch({ type: 'SEND_ALERT', payload: {
+      date: this.state.date,
+      time: this.state.time,
+      dog_park_id: this.state.dogPark,
+      notes: this.state.notes,
+      id: this.props.user.id,
+      //phone: parseInt(this.props.user.phone),
+      human_name: this.props.user.human_name,
+      dogParkName: this.state.dogParkName,
+      numbers: this.props.phoneNumbers
+    }})
+    // this.handleAlert(this.state);
+    alert('Your Network Has Been Alerted! Get Ready To DogParkWell!') 
 }
+  // handleAlert(eventDeets){
+  //   console.log('in handle Alert');
+  //   this.setState({
+  //     ...this.state,
+  //     submitting: true
+  //   });
+  //   fetch('/api/sendMessage', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //    body: JSON.stringify(this.state.message) 
+  //   })
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     if (data.success) {
+  //       this.setState({
+  //         error: false,
+  //         submitting: false,
+  //         message: {
+  //           to: '',
+  //           body: ''
+  //         }
+  //       });
+  //     } else {
+  //       this.setState({
+  //         error: true, 
+  //         submitting: false
+  //       });
+  //     }
+  //   });
+  // }
+
+  handlePark = (event) => {
+    console.log('in handlePark');
+    this.setState({
+      ...this.setState,
+      dogPark: event.target.value.id,
+      dogParkName: event.target.value.dog_park
+    })
+  }
 
 render(){
   const {classes} = this.props;
-
-    console.log('date state: ', this.state.date);
-    console.log('time state: ', this.state.time);
-    console.log('notes state: ', this.state.notes);
-    console.log('dog park state: ', this.state.dogPark);
-    
-    
+    // console.log('date state: ', this.state.date);
+    // console.log('time state: ', this.state.time);
+    // console.log('notes state: ', this.state.notes);
+    console.log('phone numbers in state: ', this.props.phoneNumbers)
+    console.log('dog park state: ', this.state.dogPark, this.state.dogParkName);
   return(
     <>
     <Grid className={classes.root}>
@@ -167,11 +233,11 @@ render(){
             className={classes.playdateInputPark}
             variant="outlined"
             margin="normal"
-            onChange={this.handleInputChangeFor('dogPark')}
+            onChange={this.handlePark}
             helperText="Select the dog park that you're going to"
             >
               {this.props.dogPark.map(option => (
-          <MenuItem key={option.id} value={option.id}>
+          <MenuItem key={option.id} value={option} >
             {option.dog_park}
           </MenuItem>))} 
           </TextField>
@@ -194,18 +260,15 @@ render(){
 
         
     )
-}
-
-}
-
-
-
+}}
 
 const mapStateToProps = (reduxState) => {
     return {
         reduxState,
         user: reduxState.user,
         dogPark: reduxState.dogParkReducer,
+        network: reduxState.setNetworkReducer,
+        phoneNumbers: reduxState.setPhoneNumbers
 
     }
 }

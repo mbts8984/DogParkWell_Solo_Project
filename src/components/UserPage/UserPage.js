@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //import LogOutButton from '../LogOutButton/LogOutButton';
 import './UserPage.css';
-import { List, Card, ListItem, ListItemText, Typography, Grid, ListItemSecondaryAction} from '@material-ui/core';
+
+
+import {  List, Card, ListItem, ListItemText, Typography, Grid, ListItemSecondaryAction} from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import {withStyles} from '@material-ui/styles';
-import {createMuiTheme} from '@material-ui/core/styles';
+//import {createMuiTheme} from '@material-ui/core/styles';
+
 import moment from 'moment';
 
 // const theme =createMuiTheme({
