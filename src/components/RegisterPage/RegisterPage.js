@@ -86,7 +86,7 @@ class RegisterPage extends Component {
           
         },
       })
-     // this.props.history.push('/dogForm');
+     this.props.history.push('/dogForm');
     } else {
       this.props.dispatch({type: 'REGISTRATION_INPUT_ERROR'});
     }

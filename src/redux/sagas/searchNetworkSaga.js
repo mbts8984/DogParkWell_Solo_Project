@@ -11,6 +11,7 @@ function* searchUserSaga(action) {
     
     // calls the return_search reducer to store the answer data
     yield put({ type: 'SET_SEARCH_ANSWER', payload: response.data });
+    
   } catch (error) {
     console.log('fetchDogsSaga GET request failed', error);
   }

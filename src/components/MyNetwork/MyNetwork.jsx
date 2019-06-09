@@ -47,7 +47,7 @@ render() {
     const {classes} = this.props;       
 return (
    <>
-   <ThemeProvider>
+   <ThemeProvider theme={theme}>
    <Grid container theme={theme} className={classes.root}>
    <div>
         <img src="./Images/tailBiting.JPG" alt="great dane puppy standing on log" className={classes.headerPic} />

@@ -50,6 +50,11 @@ const styles = {
      marginLeft: '410px',
      marginBottom: '20px',
      marginTop: '20px'
+ },
+ footText: {
+     marginBottom: '25px',
+     textSize: 'x-small',
+     color: 'grey'
  }
 }
 
@@ -85,7 +90,6 @@ class DogForm extends Component {
     }
 
     addDog = (event) => {
-        event.preventDefault();
         console.log('in addDog');
         
         this.props.dispatch({ type: 'ADD_DOG', 
@@ -210,6 +214,9 @@ class DogForm extends Component {
         </CardActions>
        </FormGroup>
        </FormControl>
+       <Grid container justify="center">
+       <Typography className={classes.footText} variant="body2"><i>You Can Always Add More Dogs!</i></Typography>
+       </Grid>
        </Card>
     </Grid>
     </ThemeProvider>
