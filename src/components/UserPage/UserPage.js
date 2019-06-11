@@ -48,16 +48,17 @@ const styles = {
   blueDiv: {
    backgroundColor: '#aadaac',
    marginBottom: '100px',
-   paddingTop: '30px'
+   paddingTop: '20px',
+   marginTop: '70px'
   },
   greenDiv: {
     backgroundColor: '#aadaac',
     paddingTop: '5px'
   },
   parkHisHead: {
-    marginTop: '30px',
-    textDecoration: 'underline',
-    marginBottom: '40px'
+    marginTop: '15px',
+    //textDecoration: 'underline',
+    marginBottom: '20px'
   },
   networkHead: {
     textType: 'Arial',
@@ -70,7 +71,8 @@ const styles = {
     backgroundColor: '#4caf50'
   },
   friendName: {
-    marginLeft: '38%'
+    marginLeft: '38%',
+    marginBottom: '20px'
   }
 }
 
@@ -141,12 +143,6 @@ render() {
     </div>
     
 
-  <div>
-    <Grid container justify="center">
-      <Typography className={classes.parkHisHead} variant="h4">My Park History</Typography>
-      </Grid>
-      <br/>
-  </div>
    <div className={classes.blueDiv}>
     <div className={classes.parkHistory}>
       {/* <Grid container justify="center">
@@ -155,11 +151,17 @@ render() {
       <br/> */}
     <Grid> 
     <div className="eventListDiv">
+      <div>
+    <Grid container justify="center">
+      <Typography className={classes.parkHisHead} variant="h4">My Park History</Typography>
+      </Grid>
+      <br/>
+  </div>
       <List>
         {this.props.event.map(event => (
           <ListItem key={event.id}>
             {/* {console.log('HERE IS THE DATE: ', moment(event.date).format("MMM Do YY"))} */}
-            <ListItemText secondary={event.notes}><b>Where:</b> {event.dog_park} <b>When: </b>{moment(event.date).format("MMM Do YYYY")}
+            <ListItemText className={classes.eventHis} secondary={event.notes}><b>Where:</b> {event.dog_park} <b>When: </b>{moment(event.date).format("MMM Do YYYY")}
             </ListItemText>
             <ListItemSecondaryAction edge="end" aria-label="Delete">
             <DeleteIcon onClick={() => this.handleEventDelete(event.id)} value={event.id}/>
