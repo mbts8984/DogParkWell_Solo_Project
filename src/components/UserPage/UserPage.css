@@ -15,23 +15,23 @@
 .bottomAngle {
   margin-top: 20px;
   width: 111%;
-  height: 35px;
+  height: 40px;
   background: #aadaac;
   /* left: -20%; */
   bottom: 100px;
   transform: rotate(3deg);
-  -webkit-transform: rotate(3deg);
+  -webkit-transform: rotate(2.5deg);
   -moz-transform: rotate(3deg);
 }
 
 .topAngle {
   margin-bottom: -50px;
-  width: 111%;
-  height: 35px;
+  width: 120%;
+  height: 45px;
   background: #aadaac;
   /* left: -20%; */
   bottom: 100px;
   transform: rotate(3deg);
-  -webkit-transform: rotate(3deg);
+  -webkit-transform: rotate(2.5deg);
   -moz-transform: rotate(3deg);
 }

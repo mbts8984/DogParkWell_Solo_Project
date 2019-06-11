@@ -25,8 +25,9 @@ const styles = {
   },
   heading: {
     marginTop: '30px',
-    marginBottom: '30px'
-    
+    marginBottom: '30px',
+    display: 'inline-block',
+    marginLeft: '600px'
   },
   subHead: {
     marginTop: '10px'    
@@ -45,7 +46,9 @@ const styles = {
     backgroundColor: 'gray',
     height: '1px',
     width: '900px',
-    marginTop: '20px'
+    marginTop: '20px',
+    marginLeft: '550px',
+    marginBottom: '30px'
   },
   playdateInput: {
     marginTop: '20px',
@@ -161,9 +164,10 @@ render(){
      <img src="./Images/bogartFace.JPG" alt="German Shepherd at park" className={classes.dogPic} />
      <Grid container justify="center" className={classes.heading}>
           <Typography className={classes.head} variant="h2">Ready To Go To The Park?</Typography>
-          <Typography className={classes.subHead} variant="h6"><i>Let Your DogParkWell Network Know When You're Going & Get Your Pups Get Tired Faster!</i></Typography>
-            <div className={classes.breakUpDiv}></div>
+          <Typography className={classes.subHead} variant="h6"><i>Let Your DogParkWell Network Know When You're Going & Get Your Pups Tired Faster!</i></Typography>
+            {/* <div className={classes.breakUpDiv}></div> */}
     </Grid>
+     <div className={classes.breakUpDiv}></div>
     <Grid container justify="center">
      <ThemeProvider theme={theme}> 
      <Card className={classes.form}>
