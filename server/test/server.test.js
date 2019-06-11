@@ -21,7 +21,7 @@ describe('It should protect the /user route.', () => {
         let agent = testServer.agent(app)
         const response = await agent
                                  .post('/api/user/login')
-                                 .send({username: 'Maddie', password: '1234'})
+                                 .send({, })
 
         expect(response.statusCode).toBe(200);
                     
@@ -36,7 +36,7 @@ describe('It should protect the /api/getDogs route', () => {
         let agent = testServer.agent(app)
         const response = await agent 
                                 .post('/api/user/login')
-                                .send({username: 'Maddie', password: '1234'})
+                                .send({})
 
         expect(response.statusCode).toBe(200);
 
@@ -50,7 +50,7 @@ describe('it should protect route and be able to add a dog at /api/addDog route'
         let agent = testServer.agent(app)
         const response = await agent 
                                 .post('/api/user/login')
-                                .send({username: 'Maddie', password: '1234'})
+                                .send({})
         expect(response.statusCode).toBe(200)
 
         const addDog = await agent
