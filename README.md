@@ -1,5 +1,5 @@
 # DogParkWell Project
-DogParkWell is a React-based image carousel, using Redux for client-side data storage and Redux Sagas for making requests to the server. The application allows users to create and account and their dogs and find and add other users as friends in their DogParkWell network and create playdate events that sends text messages to their entire network to alert them of the event.
+DogParkWell is a React-based networking platform for dog parents, using Redux for client-side data storage and Redux Sagas for making requests to the server. The application allows users to create and account, add their dog(s), and find and add other users as friends in their DogParkWell network. They can also create playdate events that sends text message alerts to their entire network to remind them of the event.
 
 ## Built With
 
